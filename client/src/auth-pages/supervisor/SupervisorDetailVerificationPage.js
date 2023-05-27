@@ -23,7 +23,7 @@ function SupervisorDetailVerificationPage() {
 
         const staffId = localStorage.getItem('staffId');
         /* const dob = dobRef.current.value;*/
-
+ //hi
 
         /* alert(dob)*/
         axios.get(`http://localhost:9999/api/supervisors/${staffId}`)
