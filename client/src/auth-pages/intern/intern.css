@@ -1,0 +1,230 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+.intern-menu-flex{
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 2em;
+    /*width: 100%;*/
+    align-items: stretch;
+}
+
+.intern-menu{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.intern-menu svg{
+    fill: #9C3730;
+  /*  stroke: #9C3730;*/
+}
+.intern-menu path{
+   /* fill: #9C3730;*/
+    stroke: #9C3730;
+}
+
+.intern-menu p{
+    font-weight: bolder;
+}
+
+.intern-menu-flex .menu{
+    margin: 2em 0;
+}
+.info-board{
+    display: flex;
+    justify-content: center;
+}
+
+.info-board .info-card{
+    margin: 1em;
+    padding: 1em;
+    border-radius: 10px;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bg-theme{
+    background-color: #ff9900;
+    color: #000;
+}
+
+.bg-mauve{
+    background-color: #07014E;
+    color: #fff;
+}
+
+.bg-brown{
+    background-color: #1D0000;
+    color: #fff;
+}
+
+
+.info-card .count{
+    background-color: #ffd;
+    border-radius: 10px;
+    color: #000;
+    padding: 0.3em;
+}
+
+.info-card .text{
+    font-weight: bolder;
+}
+
+.info-card svg{
+
+    border-radius: 50%;
+    padding: 0.1em;
+}
+
+.map-screen path{
+    stroke: black;
+    stroke-width: 3;
+}
+
+.map-screen path:hover{
+    fill: #1D0000;
+    stroke: #1a1b1f;
+}
+
+.post{
+    height: 99px;
+   /* background-color: rgba(250, 174, 118, 0.2);*/
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: clip;
+}
+
+
+article.job-posting{
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.posting-readmore{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #f90;
+    color: white;
+    padding: 0.1em 0.3em;
+    border-radius: 0.5em;
+}
+.posting-readmore a{
+    text-decoration: none;
+    color: black;
+}
+
+.posting-company{
+    color: rgba(0,0,0,0.7);
+}
+
+.posting-title{
+    margin-bottom: 0;
+}
+
+.pagination-buttons{
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    list-style: none;
+}
+
+.pagination-buttons a{
+    padding: 0.5em;
+    margin: 8px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.active-page a{
+    background-color: black;
+    color: white;
+}
+
+.activation-main{
+    display: flex;
+    justify-content: center;
+
+}
+
+.activation-block{
+    display: flex;
+    max-width: 600px;
+    justify-content: center;
+    background-color: rgba(196, 117, 38, 0.99);
+  /*  border: 1px solid black;*/
+}
+
+.activation-block form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.activation-block .bc-control{
+    width: 80%;
+    /*background-color:
+    #e8de00;*/
+    margin:0.2em 0;
+}
+
+label{
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+
+
+@media (max-width: 576px) {
+
+    .intern-menu-flex{
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 2em;
+        width: 100%;
+    }
+
+}
+
+@media (min-width: 576px) {
+    .intern-menu-flex{
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 2em;
+        width: 100%;
+    }
+}
+
+
+@media (min-width: 768px) {
+
+    .intern-menu-flex{
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 2em;
+        width: 100%;
+    }
+
+}
+
+
+@media (min-width: 992px) {
+
+}
+
+
+@media (min-width: 1200px) {
+}
+
+
+@media (min-width: 1400px) {
+}

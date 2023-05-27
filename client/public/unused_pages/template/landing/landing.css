@@ -1,0 +1,392 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Lato",sans-serif;
+}
+
+header {
+    /*background-color: rgba(72, 38, 8, 0.99);*/
+    height: 100vh;
+   /* background-blend-mode: soft-light;*/
+    background-image: url("images/hero-image2.png");
+    background-size: cover;
+    background-position: center top;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+}
+
+.header-content {
+    grid-column: 3 / span 8;
+    grid-row: 8 / span 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lead-theme {
+    font-size: 2.2rem;
+    color: #000003;
+}
+
+.sub-theme {
+    font-size: 1.3rem;
+    color: #0a0a0a;
+}
+
+.hero-action-button {
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 0.5em 3em;
+    color: #fff;
+    font-size: 1.1rem;
+    border-radius: 1.2em;
+    cursor: pointer;
+    background-color: #070400;
+    border: 2px solid #777575;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nkabom-logo {
+    height: 2rem;
+}
+
+nav {
+    background-color: transparent;/*#989898;*/
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    list-style: none;
+    position: absolute;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    padding: .5rem 1rem
+}
+
+.brand {
+    display: inline;
+    padding: 0.5em;
+}
+
+.navbar-links-block {
+    display: inline;
+}
+
+
+.navbar-links li {
+    display: inline;
+    margin-right: 2em;
+}
+.navbar-links li a{
+    text-decoration:none;
+    color: #ede;
+}
+
+.about-us {
+    padding: 2rem 1rem;
+   /* background-color: #e9ecef;*/
+    border-radius: .3rem;
+}
+
+.section-identifier {
+    margin-top: 1.5rem;
+    margin-bottom:1.5rem;
+    text-align: center;
+    text-decoration-thickness: 8px;
+    font-weight: 600;
+}
+
+
+.about-details {
+    padding: 0 2em;
+    background-color: #fff;
+    margin-top: 10px;
+    border-radius: 1em;
+}
+
+.brief-project-description {
+    font-size: 0.8rem;
+}
+
+.coffee-plantation {
+    border-radius: 1.1em;
+    width: 95%;
+}
+
+.mission-header, .vision-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.mission-text, .vision-text {
+    font-size: 1rem;
+}
+
+.partners{
+    padding-bottom: 3em;
+    padding-top: 3em;
+    background-color: rgba(192, 192, 192, 0.2);
+}
+
+
+.partner-logo {
+    position: relative;
+    width: 10em;
+}
+
+.partners .logo-slide {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.partners .slide {
+    display: inline;
+}
+
+.news-updates{
+    background-color: #ffd;
+    padding-top:2em;
+}
+
+.news-block{
+    margin-top: 1.5rem;
+    margin-bottom:1.5rem;
+    /*border: 1px solid black;*/
+}
+.news-content{
+    padding: 1em;
+}
+.news-image {
+    background-image: url("images/hero-image.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  /*  border: 1px solid gray;*/
+    height: 160px;
+    max-width: 160px;
+}
+
+.social-icons{
+    margin:2em 0.5em;
+}
+.social-icons:hover{
+    fill: #eeddee;
+}
+
+footer{
+    background-color: #000;
+    padding:3rem;
+}
+.partner-institutions-list{
+    list-style: none;
+}
+.partner-institutions-list li{
+    font-size: 0.9rem;
+}
+.partner-institutions-header{
+    font-size: 1rem;
+    margin-top: 2em;
+}
+.news-letter-block{
+    display: flex;
+}
+.news-letter-block input{
+    background-color: #1a1b1f;
+    border: 1px solid #605c5c;
+    color: #a99e9e;
+    padding: 0.1em;
+}
+.news-letter-block .submit-letter{
+    border-radius: 20px;
+    padding: 0.2em 1.2em;
+    border: 1px solid #605c5c;
+    background-color: #000;
+    color: #8a8484;
+}
+
+.news-read-more{
+    font-weight: bold;
+}
+
+/*
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.d-flex{
+    display: flex;
+}
+
+.column-1 {
+    width: 8.3333%
+}
+
+.column-2 {
+    width: 12.6666%
+}
+
+.column-3 {
+    width: 25%;
+}
+
+.column-4 {
+    width: 33.3333%;
+}
+
+.column-5 {
+    width: 41.6667%;
+}
+
+.column-6 {
+    width: 50%;
+}
+
+.column-7 {
+    width: 58.3333%;
+}
+
+.column-8 {
+    width: 66.667%;
+}
+
+.column-9 {
+    width: 75%;
+}
+
+.column-10 {
+    width: 83.3333%;
+}
+
+.column-11 {
+    width: 91.6666%;
+}
+
+.column-12 {
+    width: 100%;
+}*/
+
+
+@media (max-width: 576px) {
+
+    .navbar-links-block {
+        display: none;
+    }
+
+
+    .partners .logo-slide {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo-slide .slide .partner-logo {
+        width: 90%;
+    }
+
+    .header-content {
+        grid-column: 1 / span 12;
+        grid-row: 8 / span 4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lead-theme {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .sub-theme {
+        font-size: 0.6rem;
+        text-align: center;
+    }
+
+    header {
+        height: 75vh;
+    }
+
+    .hero-action-button {
+        padding: 0.3em 2em;
+        border: 1px solid #000;
+        font-size: 1rem;
+
+    }
+
+    .coffee-plantation {
+        width: 100%;
+    }
+
+    .news-image{
+        max-width: 100%;
+       /* height: 280px;*/
+        background-size: cover;
+        background-color: #61dafb;
+    }
+    .news-description{
+        display: none;
+    }
+}
+
+@media (min-width: 576px) {
+
+
+    .navbar-links-block {
+        display: none;
+    }
+
+    .partners .logo-slide {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo-slide .slide .partner-logo {
+        width: 90%;
+    }
+
+    .coffee-plantation {
+        width: 95%;
+    }
+}
+
+
+@media (min-width: 768px) {
+
+    .navbar-links-block {
+        display: none;
+    }
+
+    .partners .logo-slide {
+        flex-direction: row;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .nav-toggler {
+        display: none;
+    }
+
+    .navbar-links-block {
+        display: inline;
+    }
+}
+
+
+@media (min-width: 1200px) {
+}
+
+
+@media (min-width: 1400px) {
+}
+
