@@ -5,15 +5,21 @@ import {MdAssignment, MdMessage, MdSupervisorAccount} from "react-icons/md";
 import {GrMapLocation, GrPlan} from "react-icons/gr";
 import {BsHeadset} from "react-icons/bs";
 import './supervisor.css'
+import useSupervisorAuth from "../../hooks/useSupervisorAuth";
+import {useState} from "react";
+import InternNav from "../../pages/reusables/InternNav";
 
 function SupervisorDashboard(){
+    useSupervisorAuth()
+    const [supervisor,setSupervisor] = useState(JSON.parse(localStorage.getItem('supervisor')))
+
     return (
         <section>
-            <SupervisorNav/>
+            <SupervisorNav firstName={supervisor.firstName} photoUrl={supervisor.photoUrl}/>
         <main className={'container'}>
-            <h3 className={'text-dark text-center my-2'}>Welcome back, Robert DOE</h3>
+            <h4 className={'text-dark text-center my-2'}>Welcome back, {`${supervisor.firstName} ${supervisor.lastName}`}</h4>
 
-            <section className={'container'}>
+            <section className={'container mt-5'}>
                 <div className="row">
                     <div className="col-md-4 d-flex justify-content-between py-2 border">
                         <AiFillBulb fontSize={30}/> <span className={'text'}> Internships</span> <span className={'count'}>20</span>

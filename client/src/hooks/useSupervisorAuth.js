@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {locals} from "express/lib/application";
 import axios from "axios";
 
 function useSupervisorAuth() {

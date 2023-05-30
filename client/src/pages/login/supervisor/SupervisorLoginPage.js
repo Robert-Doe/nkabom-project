@@ -2,27 +2,35 @@ import React,{useRef} from 'react';
 import style from './SupervisorLoginPage.module.css'
 import loginBranding from '../nkabom_login_dark_bg.png'
 import axios from "axios";
+import {Link, useNavigate} from "react-router-dom";
 
 function SupervisorLoginPage(props) {
     const staffIdRef=useRef()
     const passKeyRef=useRef()
-
+    const navigate = useNavigate()
     const apiUrl = process.env.REACT_APP_API_URL;
 
-    const loginHandler=()=>{
-        axios.post(`${apiUrl}/supervisors/login/`, {
+    const loginHandler=(e)=>{
+        e.preventDefault()
+
+        axios.post(`http://localhost:9999/api/supervisors/login`, {
             staffId:staffIdRef.current.value,
             passKey: passKeyRef.current.value
         })
             .then(r => {
-
+                if(r.status===200){
+                    alert("Signing and Redirecting")
+                    localStorage.setItem('accessToken',r.data.token)
+                    localStorage.setItem('supervisor',JSON.stringify(r.data.supervisor))
+                    navigate('/supervisor/dashboard')
+                }
         })
     }
 
 
     return <section className={style.loginBody}>
         <main className={`${style.loginContent}`}>
-            <form className={style.signInForm} id="passwordSignInForm" method="post">
+            <form className={style.signInForm} id="passwordSignInForm">
                 <img src={loginBranding}  width={250} alt=""/>
                 <div>
                     <label className="" htmlFor="Username">Email or Username</label>
@@ -32,7 +40,7 @@ function SupervisorLoginPage(props) {
                     <label className="" htmlFor="Password">Password</label>
                     <input id="Password" maxLength="128" ref={passKeyRef} name="Password" type="password"/>
                 </div>
-                <button type="submit" id="login" className={style.signinBtn}>Sign in</button>
+                <button id="login" onClick={loginHandler} className={style.signinBtn}>Sign in</button>
             </form>
             <div className="forgot-password">
                 <a  href="/id/ForgotPassword">Forgot
@@ -41,10 +49,10 @@ function SupervisorLoginPage(props) {
             <div className={style.or}>
                 <hr className={style.bar}/>
             </div>
-            <a href="https://www.pluralsight.com/get-started" id="create-account-link"
+            <Link href="" id="create-account-link"
                className={style.createAccount}>
-                <span className="">Create an account</span>
-            </a>
+                <span className="">Activate account</span>
+            </Link>
             <div className={`${style.footer} py-5`}>
                 Copyright © 2023 Nkabom Project. All rights reserved.
             </div>

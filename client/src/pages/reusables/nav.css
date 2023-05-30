@@ -5,11 +5,15 @@
 
 .intern-nav-photo{
     width: 30px;
+    height: 30px;
+    object-fit: cover;
+    object-position: top;
     border-radius: 50%;
-    border: 2px solid white;
+    border: 2px solid #001;
 }
 
 .profile-pic-menu{
+    width: 180px;
     display: flex;
     flex-direction: column;
     padding:0.5em;
@@ -34,6 +38,11 @@
     padding: 0;
 }
 
+.cdropdown .link{
+    color: black;
+    font-weight: bold;
+}
+
 .cdropdown.active > .link,
 .link:hover {
     color: black;
@@ -49,6 +58,7 @@
     top: calc(100% + .25rem);
     background-color: white;
     padding: .75rem;
+    z-index: 2;
     border-radius: .25rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
     opacity: 0;
@@ -75,9 +85,6 @@
     gap: .25rem;
 }
 
-.login-form > input {
-    margin-bottom: .5rem;
-}
 
 nav{
     background-image: url("background.svg");

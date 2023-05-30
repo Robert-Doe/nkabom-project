@@ -8,87 +8,7 @@ const SupervisorAuth = require('../models/SupervisorAuth')
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-
-
-
 const secretKey = process.env.SUPERVISOR_ACCESS_TOKEN_SECRET;
-
-
-// Get all supervisors
-router.get('/', async (req, res) => {
-    try {
-        // Retrieve all supervisors from the database
-        const supervisors = await Supervisor.findAll();
-
-        // Return the supervisors data as JSON
-        res.json(supervisors);
-    } catch (error) {
-        // Return an error message if an error occurs
-        res.status(500).json({ message: error.message });
-    }
-});
-
-// Get a single supervisor by ID
-router.get('/:id', async (req, res) => {
-    try {
-        // Retrieve the supervisor with the specified id from the database
-        const supervisor = await Supervisor.findByPk(req.params.id);
-
-        // Return the supervisor data as JSON
-        res.json(supervisor);
-    } catch (error) {
-        // Return an error message if an error occurs
-        res.status(500).json({ message: error.message });
-    }
-});
-
-// Create a new supervisor
-router.post('/', async (req, res) => {
-    try {
-        // Create a new supervisor using the request body data
-        const supervisor = await Supervisor.create(req.body);
-
-        // Return the new supervisor data as JSON
-        res.status(201).json(supervisor);
-    } catch (error) {
-        // Return an error message if an error occurs
-        res.status(500).json({ message: error.message });
-    }
-});
-
-// Update an existing supervisor by ID
-router.put('/:id', async (req, res) => {
-    try {
-        // Retrieve the supervisor with the specified id from the database
-        const supervisor = await Supervisor.findByPk(req.params.id);
-
-        // Update the supervisor record with the request body data
-        await supervisor.update(req.body);
-
-        // Return the updated supervisor data as JSON
-        res.json(supervisor);
-    } catch (error) {
-        // Return an error message if an error occurs
-        res.status(500).json({ message: error.message });
-    }
-});
-
-// Delete an existing supervisor by ID
-router.delete('/:id', async (req, res) => {
-    try {
-        // Retrieve the supervisor with the specified id from the database
-        const supervisor = await Supervisor.findByPk(req.params.id);
-
-        // Delete the supervisor record
-        await supervisor.destroy();
-
-        // Return a success message as JSON
-        res.json({ message: 'Supervisor record deleted successfully.' });
-    } catch (error) {
-        // Return an error message if an error occurs
-        res.status(500).json({ message: error.message });
-    }
-});
 
 
 async function hashPassword(password) {
@@ -180,6 +100,86 @@ router.post('/verify-activation',async (req, res) => {
         res.json({isActivated: false})
     }
 })
+
+
+// Get all supervisors
+router.get('/', async (req, res) => {
+    try {
+        // Retrieve all supervisors from the database
+        const supervisors = await Supervisor.findAll();
+
+        // Return the supervisors data as JSON
+        res.json(supervisors);
+    } catch (error) {
+        // Return an error message if an error occurs
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Get a single supervisor by ID
+router.get('/:id', async (req, res) => {
+    try {
+        // Retrieve the supervisor with the specified id from the database
+        const supervisor = await Supervisor.findByPk(req.params.id);
+
+        // Return the supervisor data as JSON
+        res.json(supervisor);
+    } catch (error) {
+        // Return an error message if an error occurs
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Create a new supervisor
+router.post('/', async (req, res) => {
+    try {
+        // Create a new supervisor using the request body data
+        const supervisor = await Supervisor.create(req.body);
+
+        // Return the new supervisor data as JSON
+        res.status(201).json(supervisor);
+    } catch (error) {
+        // Return an error message if an error occurs
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Update an existing supervisor by ID
+router.put('/:id', async (req, res) => {
+    try {
+        // Retrieve the supervisor with the specified id from the database
+        const supervisor = await Supervisor.findByPk(req.params.id);
+
+        // Update the supervisor record with the request body data
+        await supervisor.update(req.body);
+
+        // Return the updated supervisor data as JSON
+        res.json(supervisor);
+    } catch (error) {
+        // Return an error message if an error occurs
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Delete an existing supervisor by ID
+router.delete('/:id', async (req, res) => {
+    try {
+        // Retrieve the supervisor with the specified id from the database
+        const supervisor = await Supervisor.findByPk(req.params.id);
+
+        // Delete the supervisor record
+        await supervisor.destroy();
+
+        // Return a success message as JSON
+        res.json({ message: 'Supervisor record deleted successfully.' });
+    } catch (error) {
+        // Return an error message if an error occurs
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
+
 
 router.post('/login', async (req, res) => {
     const {staffId, passKey} = req.body;

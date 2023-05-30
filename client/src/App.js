@@ -53,7 +53,6 @@ function App() {
 
                     <Route path='/coordinator/dashboard' exact element={<CoordinatorDashboard/>}/>
 
-
                     <Route path='/supervisor/dashboard' exact element={<SupervisorDashboard/>}/>
                     <Route path='/supervisor/account-activation' exact element={<ActivateSupervisorAccountPage/>}/>
                     <Route path='/supervisor/detail-verification' exact element={<SupervisorDetailVerificationPage/>}/>
