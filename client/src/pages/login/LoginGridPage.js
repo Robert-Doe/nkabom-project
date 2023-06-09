@@ -22,7 +22,7 @@ function LoginGridPage(props) {
                                         <FaUserTie color={'#f90'} fontSize={80}/>
                                     </div>
                                     <h6 className={'title'}>Coordinator</h6>
-                                    <Link to={'/login/coordinator'} className={'btn login-btn'}>Go</Link>
+                                    <Link to={'/login/coordinator'} className={'btn login-btn'}>Go >></Link>
                                 </div>
                             </div>
                             <div className="col-md-4 login-link">
@@ -31,7 +31,7 @@ function LoginGridPage(props) {
                                         <FaUsers color={'#f90'} fontSize={80}/>
                                     </div>
                                     <h6 className={'title'}>Supervisor</h6>
-                                    <Link to={'/login/supervisor'} className={'btn login-btn'}>Go</Link>
+                                    <Link to={'/login/supervisor'} className={'btn login-btn'}>Go >></Link>
                                 </div>
                             </div>
                             <div className="col-md-4 login-link">
@@ -40,7 +40,7 @@ function LoginGridPage(props) {
                                         <FaUserGraduate color={'#f90'} fontSize={80}/>
                                     </div>
                                     <h6 className={'title'}>Intern</h6>
-                                    <Link to={'/login/intern'} className={'btn login-btn'}>Go</Link>
+                                    <Link to={'/login/intern'} className={'btn login-btn'}>Go >></Link>
                                 </div>
                             </div>
                         </div>

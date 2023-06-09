@@ -8,8 +8,10 @@ const SupervisorAuth = require('../models/SupervisorAuth')
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const nodemailer = require('nodemailer');
+const {verifyPasswordArgon, hashPasswordArgon} = require("../library/hashing");
 const secretKey = process.env.SUPERVISOR_ACCESS_TOKEN_SECRET;
 
+/*
 
 async function hashPassword(password) {
     const saltRounds = 10;
@@ -23,10 +25,11 @@ async function hashPassword(password) {
         return null;
     }
 }
+*/
 
 // Generate a JWT token for a given user
 function generateToken(staff) {
-    const payload = { id: staff.staffId, email: staff.email };
+    const payload = { id: staff.staffId, email: staff.email, role:'supervisor' };
     const options = { expiresIn: '300d' };
     return jwt.sign(payload, secretKey, options);
 }
@@ -41,7 +44,7 @@ async function authenticateSupervisor(staffId, password) {
         return null;
     }
 
-    const isPasswordValid = bcrypt.compareSync(password, supervisorAuth.keyHash);
+    const isPasswordValid = await verifyPasswordArgon(supervisorAuth.keyHash,password);
 
     if (!isPasswordValid) {
         // The password is incorrect
@@ -194,6 +197,8 @@ router.get('/:id', async (req, res) => {
         // Return an error message if an error occurs
         res.status(500).json({ message: error.message });
     }
+
+
 });
 
 // Create a new supervisor
@@ -310,7 +315,7 @@ router.post('/auth/signup', async (req, res ) => {
 
         const {staffId,email,passKey}=req.body
 
-        const keyHash=await hashPassword(passKey)
+        const keyHash=await hashPasswordArgon(passKey)
         // Create a new Supervisor using the request body data
         const supervisorAuth = await SupervisorAuth.create({keyHash,email,staffId});
 

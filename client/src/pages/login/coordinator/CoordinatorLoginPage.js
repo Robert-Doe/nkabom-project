@@ -1,31 +1,58 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import style from './CoordinatorLoginPage.module.css'
 import loginBranding from '../nkabom_login_bg.png'
+import axios from "axios";
+import {Link, useNavigate} from "react-router-dom";
+import useCoordinatorAuth from "../../../hooks/useCoordinatorAuth";
 
 function CoordinatorLoginPage(props) {
+
+    const staffIdRef = useRef()
+    const passKeyRef=useRef()
+    const navigate = useNavigate()
+    const apiUrl = process.env.REACT_APP_API_URL;
+
+
+    const loginHandler=(e)=>{
+        e.preventDefault()
+
+        axios.post(`http://localhost:9999/api/coordinators/login`, {
+            staffId:staffIdRef.current.value,
+            passKey: passKeyRef.current.value
+        })
+            .then(r => {
+                if(r.status===200){
+                    alert("Signing and Redirecting")
+                    localStorage.setItem('accessToken',r.data.token)
+                    localStorage.setItem('coordinator',JSON.stringify(r.data.coordinator))
+                    navigate('/coordinator/dashboard')
+                }
+            })
+    }
+
     return <section className={style.loginBody}>
         <aside className={style.loginAside}></aside>
         <main className={style.loginContent}>
-        <form action="/id" className="signInForm" id="passwordSignInForm" method="post">
+        <form className="signInForm" id="passwordSignInForm" >
             <img src={loginBranding}  width={250} alt=""/>
             <div>
-                <label className={style.label} htmlFor="Username">Email or Username</label>
-                <input className="" id="Username" name="Username" type="text"/>
+                <label className={style.label} htmlFor="Username">Staff ID</label>
+                <input className={style.input} ref={staffIdRef} id="Username" name="Username" type="text"/>
             </div>
             <div>
                 <label className={style.label} htmlFor="Password">Password</label>
-                <input id="Password" maxLength="128" name="Password" type="password"/>
+                <input className={style.input} id="Password" ref={passKeyRef} maxLength="128" name="Password" type="password"/>
             </div>
-            <button type="submit" id="login" className={style.signinBtn}>Sign in</button>
+            <button type="submit" onClick={loginHandler} id="login" className={style.signinBtn}>Sign in</button>
         </form>
         <div className="forgot-password">
-            <a  href="/id/ForgotPassword">Forgot
+            <a  href="#">Forgot
                 password?</a>
         </div>
         <div className={style.or}>
             <hr className={style.bar}/>
         </div>
-        <a href="https://www.pluralsight.com/get-started" id="create-account-link"
+        <a href="" id="create-account-link"
            className={style.createAccount}>
             <span className="">Create an account</span>
         </a>

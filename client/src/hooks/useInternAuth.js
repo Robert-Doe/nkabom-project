@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 function useInternAuth() {
     const navigate = useNavigate();
@@ -12,19 +13,15 @@ function useInternAuth() {
             if (!accessToken) {
                 // Access token is missing, redirect to login page
                 navigate('/login');
-            } else {
-                // Perform additional checks, such as token decoding and expiration validation
-                // You can use your preferred JWT library or authentication mechanism here
-
-                // Example: Simulating token expiration after 1 hour
-                const expirationTime = 60 * 60 * 1000; // 1 hour in milliseconds
-                const tokenExpiration = localStorage.getItem('tokenExpiration');
-                const currentTime = new Date().getTime();
-
-                if (currentTime - tokenExpiration > expirationTime) {
-                    // Access token has expired, redirect to login page
+            } else{
+                axios.post('http://localhost:9999/api/interns/token-verification',
+                    {token: localStorage.getItem('accessToken')}).then(response => {
+                    if(response.status!==200){
+                        navigate('/login');
+                    }
+                }).catch(err=>{
                     navigate('/login');
-                }
+                })
             }
         };
 

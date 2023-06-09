@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import CoordinatorLoginPage from "./pages/login/coordinator/CoordinatorLoginPage";
 import SupervisorLoginPage from "./pages/login/supervisor/SupervisorLoginPage";
 import InternLoginPage from "./pages/login/intern/InternLoginPage";
-import ViewAdvertisementDetailsPage from "./auth-pages/intern/ViewAdvertisementDetailsPage";
 import InternDetailVerificationPage from "./auth-pages/intern/InternDetailVerificationPage";
 import ActivateAccountPage from "./auth-pages/intern/ActivateAccountPage";
 import InternDashboard from "./auth-pages/intern/InternDashboard";
@@ -23,6 +22,11 @@ import LandingPage from "./pages/landing/LandingPage";
 import {AuthProvider} from "./hooks/AuthContext";
 import ActivateSupervisorAccountPage from "./auth-pages/supervisor/ActivateSupervisorAccountPage";
 import SupervisorDetailVerificationPage from "./auth-pages/supervisor/SupervisorDetailVerificationPage";
+import InternshipMenuPage from "./auth-pages/coordinator/internships/InternshipMenuPage";
+import AddNewsSegmentPage from "./auth-pages/project_manager/AddNewsSegmentPage";
+import SupervisorMenuPage from "./auth-pages/coordinator/supervisors/SupervisorMenuPage";
+import InternsMenuPage from "./auth-pages/coordinator/interns/InternsMenuPage";
+import AccommodationMenuPage from "./auth-pages/coordinator/accommodation/AccommodationMenuPage";
 
 
 
@@ -51,7 +55,7 @@ function App() {
                     <Route path='/accommodation' exact element={<AccommodationListings/>}/>
                     <Route path='/scholarships' exact element={<ScholarshipListings/>}/>
 
-                    <Route path='/coordinator/dashboard' exact element={<CoordinatorDashboard/>}/>
+
 
                     <Route path='/supervisor/dashboard' exact element={<SupervisorDashboard/>}/>
                     <Route path='/supervisor/account-activation' exact element={<ActivateSupervisorAccountPage/>}/>
@@ -60,7 +64,19 @@ function App() {
                     <Route path='/intern/dashboard' exact element={<InternDashboard/>}/>
                     <Route path='/intern/account-activation' exact element={<ActivateAccountPage/>}/>
                     <Route path='/intern/detail-verification' exact element={<InternDetailVerificationPage/>}/>
-                    <Route path='/internships/:id/' exact element={<ViewAdvertisementDetailsPage/>}/>
+                    {/* <Route path='/internships/:id/' exact element={<ViewAdvertisementDetailsPage/>}/>*/}
+
+                    <Route path='/coordinator/dashboard' exact element={<CoordinatorDashboard/>}/>
+                    <Route path='/coordinator/internships/menu' exact element={<InternshipMenuPage/>}/>
+                    <Route path='/coordinator/students/menu' exact element={<InternsMenuPage/>}/>
+                    <Route path='/coordinator/partners/menu' exact element={<InternshipMenuPage/>}/>
+                    <Route path='/coordinator/supervisors/menu' exact element={<SupervisorMenuPage/>}/>
+                    <Route path='/coordinator/accommodation/menu' exact element={<AccommodationMenuPage/>}/>
+                    <Route path='/coordinator/support/menu' exact element={<InternshipMenuPage/>}/>
+
+
+
+                    <Route path='/project-assistant/news/add' exact element={<AddNewsSegmentPage/>}/>
                 </Routes>
             </Router>
         </AuthProvider>

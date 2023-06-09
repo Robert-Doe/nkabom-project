@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.94e09cf5.css",
+    "main.js": "/static/js/main.ee86e889.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/supervisor_login_aside.png": "/static/media/supervisor_login_aside.285e73de54da03ad0bc9.png",
+    "static/media/ktu_login_background.png": "/static/media/ktu_login_background.a2e41cb921042a3ed808.png",
+    "static/media/hero-image2.png": "/static/media/hero-image2.4cbbbd6e170abc133165.png",
+    "static/media/prof_debrah.jpg": "/static/media/prof_debrah.da4c32556abd27fca925.jpg",
+    "static/media/david.jpg": "/static/media/david.81adc6fca341269b082a.jpg",
+    "static/media/logo.png": "/static/media/logo.bc5b4be078a4415e9e3f.png",
+    "static/media/intern_login_aside.png": "/static/media/intern_login_aside.fdd75c0b33ba29f0c2e3.png",
+    "static/media/mcf-logo.png": "/static/media/mcf-logo.cad44cfc4d8d9ef52d4d.png",
+    "static/media/uesd-logo.png": "/static/media/uesd-logo.f58fe97b15c25fdf3a07.png",
+    "static/media/knust-logo.png": "/static/media/knust-logo.9e6a410de34bc87822bd.png",
+    "static/media/coffee_plantation.jpg": "/static/media/coffee_plantation.8284d60af333e2dc85d2.jpg",
+    "static/media/mcgill-logo.png": "/static/media/mcgill-logo.cb8731e3898089886924.png",
+    "static/media/ktu-logo.png": "/static/media/ktu-logo.5659627e16880acb3db1.png",
+    "static/media/prof_simpson.jpg": "/static/media/prof_simpson.62e081f47a78b4258a1a.jpg",
+    "static/media/dr_edusei.jpg": "/static/media/dr_edusei.965a15d02ec5c73a34e4.jpg",
+    "static/media/nkabom_login_bg.png": "/static/media/nkabom_login_bg.5366491cba8bdf08ddcd.png",
+    "static/media/nkabom_login_dark_bg.png": "/static/media/nkabom_login_dark_bg.0aac561f96d0e2aa53b5.png",
+    "static/media/robert.jpeg": "/static/media/robert.9eb7b18c6caecabd3bc3.jpeg",
+    "static/media/mission.png": "/static/media/mission.c4c6608fc3a6a7962e9d.png",
+    "static/media/ajima.jpg": "/static/media/ajima.6a03c41f3641e0feb235.jpg",
+    "static/media/coordinator_login_aside.png": "/static/media/coordinator_login_aside.e3ce3b956b698cc431f8.png",
+    "static/media/prof_ellis.jpg": "/static/media/prof_ellis.d093b24cf1ca68b246c6.jpg",
+    "index.html": "/index.html",
+    "static/media/background.svg": "/static/media/background.087b60f3ad88141b80cd.svg",
+    "main.94e09cf5.css.map": "/static/css/main.94e09cf5.css.map",
+    "main.ee86e889.js.map": "/static/js/main.ee86e889.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.94e09cf5.css",
+    "static/js/main.ee86e889.js"
+  ]
+}

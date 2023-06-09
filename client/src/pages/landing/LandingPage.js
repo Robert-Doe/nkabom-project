@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './landing.css'
 import logo from './logo.png'
@@ -9,13 +9,32 @@ import ktuLogo from './images/ktu-logo.png';
 import uesdLogo from './images/uesd-logo.png';
 import coffeePlantation from './coffee_plantation.jpg'
 import {GiHamburgerMenu, GiShipWheel} from "react-icons/gi";
-import {AiFillEye,AiOutlineRight} from 'react-icons/ai';
+import {AiFillEye, AiOutlineRight} from 'react-icons/ai';
 import {BsFacebook, BsInstagram, BsLinkedin, BsYoutube} from "react-icons/bs";
 import Footer from "../reusables/Footer";
 import OpaqueNav from "../reusables/InternNav";
 import LandingPageNav from "../reusables/LandingPageNav";
+import axios from "axios";
+import {GridLoader} from "react-spinners";
+
 
 function LandingPage() {
+    const [news, setNews] = useState([])
+    const [isNewsLoading, setIsNewsLoading] = useState(true);
+
+    useEffect(() => {
+        axios('http://localhost:9999/api/news').then(r => {
+            if (r.data) {
+                setNews(r.data)
+            }
+            setIsNewsLoading(false);
+        }).catch(err => {
+            console.log(err)
+            setIsNewsLoading(false);
+        })
+    }, [])
+
+
     return (<section>
             <LandingPageNav/>
             <header>
@@ -94,6 +113,58 @@ function LandingPage() {
                 <h5 className={'section-identifier'}>NEWS & UPDATES</h5>
                 <div className="container">
                     <div className="row">
+                        {
+                            isNewsLoading ? (
+                                    <div className="d-flex justify-content-center w-100">
+                                        <GridLoader color={'#fabf69'} size={40} /> {/* Use the GridLoader component */}
+                                    </div>
+                                ) :
+                                news.map(newsItem => {
+                                    return (
+                                        <div className="col-md-6">
+                                            <div className="container">
+                                                <div className="news-block row">
+                                                    <div className={'col-lg-3'}>
+                                                        <div className="news-image"
+                                                             style={{backgroundImage: `url(${newsItem.pictureUrl})`}}></div>
+
+                                                    </div>
+                                                    <div className={'news-content col-lg-9'}>
+                                                        <a href={newsItem.link}><h4
+                                                            className={'news-headline'}>{newsItem.title}</h4></a>
+                                                        <p className={'news-description'}>{newsItem.description}
+                                                        </p>
+                                                        <a href={newsItem.link}><h6 className={'news-read-more'}>Read
+                                                            More<AiOutlineRight/></h6></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                        }
+                        {/* <div className="col-md-6">
+                            <div className="container">
+                                <div className="news-block row">
+                                    <div className={'col-md-3'}>
+                                        <div className="news-image"></div>
+                                    </div>
+                                    <div className={'news-content col-md-9'}>
+                                        <h3 className={'news-headline'}>Lastest news from block</h3>
+                                        <p className={'news-description'}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur
+                                            eligendi ex exercitationem impedit iure maiores optio quas quia quos.
+                                            Commodi consequatur consequuntur cupiditate id incidunt libero magnam magni
+                                            neque nostrum quis, repellendus sapiente tempore temporibus voluptas
+                                            voluptates! Adipisci, autem consectetur consequatur eveniet exercitationem
+                                            id ipsa iusto labore nobis nulla odio omnis pariatur quia quos, reiciendis
+                                            repellendus sapiente tenetur veritatis.</p>
+                                        <h6 className={'news-read-more'}>Read More<AiOutlineRight/></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*/}
+                    </div>
+                    {/*  <div className="row">
                         <div className="col-md-6">
                             <div className="container">
                                 <div className="news-block row">
@@ -131,49 +202,10 @@ function LandingPage() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-6">
-                            <div className="container">
-                                <div className="news-block row">
-                                    <div className={'col-md-3'}>
-                                        <div className="news-image"></div>
-                                    </div>
-                                    <div className={'news-content col-md-9'}>
-                                        <h3 className={'news-headline'}>Lastest news from block</h3>
-                                        <p className={'news-description'}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet
-                                            aspernatur
-                                            atque distinctio earum facilis fugit illo maxime, quasi reiciendis.
-                                        </p>
-                                        <h6 className={'news-read-more'}>Read More<AiOutlineRight/></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6">
-                            <div className="container">
-                                <div className="news-block row">
-                                    <div className={'col-md-3'}>
-                                        <div className="news-image"></div>
-                                    </div>
-                                    <div className={'news-content col-md-9'}>
-                                        <h3 className={'news-headline'}>Lastest news from block</h3>
-                                        <p className={'news-description'}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur
-                                            eligendi ex exercitationem impedit iure maiores optio quas quia quos.
-                                            Commodi consequatur consequuntur cupiditate id incidunt libero magnam magni
-                                            neque nostrum quis, repellendus sapiente tempore temporibus voluptas
-                                            voluptates! Adipisci, autem consectetur consequatur eveniet exercitationem
-                                            id ipsa iusto labore nobis nulla odio omnis pariatur quia quos, reiciendis
-                                            repellendus sapiente tenetur veritatis.</p>
-                                        <h6 className={'news-read-more'}>Read More<AiOutlineRight/></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div>*/}
                 </div>
             </section>
-           <Footer/>
+            <Footer/>
         </section>
     )
 }

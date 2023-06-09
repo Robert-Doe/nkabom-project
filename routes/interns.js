@@ -10,6 +10,7 @@ const Intern = require('../models/Intern');
 const InternAuth = require('../models/InternAuth');
 
 var crypto = require('crypto');
+const {verifyPasswordArgon, hashPasswordArgon} = require("../library/hashing");
 
 const secretKey = process.env.INTERN_ACCESS_TOKEN_SECRET;
 
@@ -21,7 +22,7 @@ const md5=(dataValue)=>{
     return gen_hash
 }
 
-async function hashPassword(password) {
+/*async function hashPassword(password) {
     const saltRounds = 10;
 
     try {
@@ -32,12 +33,12 @@ async function hashPassword(password) {
         console.error(error);
         return null;
     }
-}
+}*/
 
 
 // Generate a JWT token for a given user
 function generateToken(intern) {
-    const payload = { id: intern.studentId, email: intern.email };
+    const payload = { id: intern.studentId, email: intern.email,role:'intern' };
     const options = { expiresIn: '300d' };
     return jwt.sign(payload, secretKey, options);
 }
@@ -52,7 +53,7 @@ async function authenticateIntern(studentId, password) {
         return null;
     }
 
-    const isPasswordValid = bcrypt.compareSync(password, internAuth.keyHash);
+    const isPasswordValid = await verifyPasswordArgon(internAuth.keyHash,password);
 
     if (!isPasswordValid) {
         // The password is incorrect
@@ -86,7 +87,7 @@ function authenticateRequest(req, res, next) {
         }
 
         // The token is valid, so we can attach the user object to the request object
-        const intern = Intern.findByPk(decoded.studentId)
+        const intern = Intern.findByPk(decoded.id)
 
         if (!intern) {
             // The user associated with the token doesn't exist in the database
@@ -205,7 +206,7 @@ router.post('/auth/signup', async (req, res ) => {
 
         const {studentId,email,passKey}=req.body
 
-        const keyHash=await hashPassword(passKey)
+        const keyHash=await hashPasswordArgon(passKey)
         // Create a new intern using the request body data
         const internAuth = await InternAuth.create({keyHash,email,studentId});
 

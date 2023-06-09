@@ -12,12 +12,14 @@ function useCoordinatorAuth() {
             if (!accessToken) {
                 // Access token is missing, redirect to login page
                 navigate('/login');
-            } else {
+            } else{
                 axios.post('http://localhost:9999/api/coordinators/token-verification',
                     {token: localStorage.getItem('accessToken')}).then(response => {
-                    if(response.status===200){
-                        navigate('/coordinator/dashboard')
+                    if(response.status!==200){
+                        navigate('/login');
                     }
+                }).catch(err=>{
+                    navigate('/login');
                 })
             }
         };

@@ -16,9 +16,11 @@ function useSupervisorAuth() {
 
                 axios.post('http://localhost:9999/api/supervisors/token-verification',
                     {token: localStorage.getItem('accessToken')}).then(response => {
-                    if(response.status===200){
-                        navigate('/supervisor/dashboard')
+                    if(response.status!==200){
+                        navigate('/login');
                     }
+                }).catch(err=>{
+                    navigate('/login');
                 })
             }
         };

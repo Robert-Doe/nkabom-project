@@ -14,7 +14,7 @@ import InternNav from "../../pages/reusables/InternNav";
 
 function InternDashboard(){
     const navigate=useNavigate()
-    useInternAuth()
+   /* useInternAuth()*/
 
     if (localStorage.getItem('accessToken')) {
         axios.post('http://localhost:9999/api/interns/token-verification',

@@ -1,0 +1,21 @@
+.internshipMenuContent{
+    background-color: #f8ad52;
+    margin: 1em;
+    border-radius: 1.5em;
+    padding: 3em 2em;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    align-items: center;
+}
+
+.menuTitle{
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.menuLink, .menuLink:hover{
+    text-decoration: none;
+    color: #1a1b1f;
+}

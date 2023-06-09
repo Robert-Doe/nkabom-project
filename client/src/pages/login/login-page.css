@@ -4,6 +4,7 @@
 
 .title{
     font-weight: bold;
+    color: #fff;
 }
 
 .login-btn{
@@ -19,8 +20,9 @@
 }
 
 .icon-border{
-    border: 3px solid rgba(10,10,10,0.75);
+    border: 3px solid rgba(252, 252, 252, 0.75);
     border-radius: 50%;
+    background-color: #fff;
     padding: 1.5em;
 }
 
@@ -43,6 +45,8 @@
     display: flex;
     justify-content: center;
     width: 100%;
+   /* background-image: url("TopoPatternBlack.webp");*/
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 

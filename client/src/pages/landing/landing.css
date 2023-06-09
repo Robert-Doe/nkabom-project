@@ -168,13 +168,16 @@ nav {
     padding: 1em;
 }
 .news-image {
-    background-image: url("images/hero-image.png");
-    background-size: contain;
+   /* background-image: url("images/hero-image.png");*/
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
   /*  border: 1px solid gray;*/
-    height: 160px;
-    max-width: 160px;
+    max-width: 130px;
+    height: 130px;
+}
+.news-headline{
+    color: #1a1b1f;
 }
 
 .social-icons{
@@ -327,12 +330,22 @@ footer{
         width: 100%;
     }
 
-    .news-image{
+  /*  .news-image{
         max-width: 100%;
-       /* height: 280px;*/
+       !* height: 280px;*!
         background-size: cover;
+        background-position: center top;
+        background-color: #61dafb;
+    }*/
+
+    .news-image {
+        min-width: 100%;
+        height: 280px;
+        background-size: cover;
+        background-position: center top;
         background-color: #61dafb;
     }
+
     .news-description{
         display: none;
     }

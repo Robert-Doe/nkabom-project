@@ -8,17 +8,21 @@ import {AiFillBulb} from "react-icons/ai";
 import {GiGraduateCap} from "react-icons/gi";
 import {MdMessage, MdSettingsApplications} from "react-icons/md";
 import {CgTrack} from "react-icons/cg";
+import style from './css/Coordinator.module.css'
+import useCoordinatorAuth from "../../hooks/useCoordinatorAuth";
+
 
 
 function CoordinatorDashboard(){
+    useCoordinatorAuth()
     return (
         <section>
             <CoordinatorNav/>
             <main className={'coordinator-main'}>
-                <CoordinatorSideNav/>
+                <CoordinatorSideNav link={'/dashboard'}/>
                 <aside className={'main-body'}>
                     <section className={'container'}>
-                        <div className="row">
+                        <div className="row mt-3">
                             <div className="col-md-4 d-flex justify-content-between py-2 border">
                                 <CgTrack fontSize={25}/> <span className={'text'}> Internships</span> <span className={'count'}>20</span>
                             </div>
@@ -33,10 +37,10 @@ function CoordinatorDashboard(){
                     <section className={'my-5'}>
                         <div className="container d-flex justify-content-between">
                             <span className={'h6-inline'}>Interns</span>
-                            <input type="search" className={'form-control-md'} placeholder={'Search by name or ID'}/>
+                            <input type="search" className={`w-25 form-control-sm ${style.searchBox}`} placeholder={'Search by name or ID'}/>
                         </div>
                         <div className="container">
-                            <table className="table table-sm">
+                            <table className="table table-sm table-bordered">
                                 <thead className="thead-dark">
                                 <tr>
                                     <th scope="col">School ID</th>
