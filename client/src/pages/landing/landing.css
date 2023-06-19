@@ -27,13 +27,18 @@ header {
 }
 
 .lead-theme {
-    font-size: 2.2rem;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.2em;
+    font-size: 2.5rem;
+    text-align: center;
     color: #000003;
 }
 
 .sub-theme {
     font-size: 1.3rem;
     color: #0a0a0a;
+    text-align: center;
+    font-weight: bold;
 }
 
 .hero-action-button {
@@ -222,63 +227,6 @@ footer{
     font-weight: bold;
 }
 
-/*
-.center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.d-flex{
-    display: flex;
-}
-
-.column-1 {
-    width: 8.3333%
-}
-
-.column-2 {
-    width: 12.6666%
-}
-
-.column-3 {
-    width: 25%;
-}
-
-.column-4 {
-    width: 33.3333%;
-}
-
-.column-5 {
-    width: 41.6667%;
-}
-
-.column-6 {
-    width: 50%;
-}
-
-.column-7 {
-    width: 58.3333%;
-}
-
-.column-8 {
-    width: 66.667%;
-}
-
-.column-9 {
-    width: 75%;
-}
-
-.column-10 {
-    width: 83.3333%;
-}
-
-.column-11 {
-    width: 91.6666%;
-}
-
-.column-12 {
-    width: 100%;
-}*/
 
 
 @media (max-width: 576px) {
@@ -353,6 +301,13 @@ footer{
 
 @media (min-width: 576px) {
 
+    .lead-theme{
+        font-size: 2rem;
+    }
+    .sub-theme{
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
 
     .navbar-links-block {
         display: none;

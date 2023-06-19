@@ -25,6 +25,103 @@ import './slick/slick.css'
 import Footer from "../reusables/Footer";
 import OpaqueNav from "../reusables/OpaqueNav";
 // import './slick/slick.theme.css'
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+
+const Carousel = () => {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        responsive: [
+            {
+                breakpoint: 576, // Adjust this breakpoint for tablet screens
+                settings: {
+                    slidesToShow: 2, // Display 2 slides on tablet screens
+                },
+            },
+            {
+                breakpoint: 768, // Adjust this breakpoint for tablet screens
+                settings: {
+                    slidesToShow: 2, // Display 2 slides on tablet screens
+                },
+            },
+            {
+                breakpoint: 1024, // Adjust this breakpoint for laptop screens
+                settings: {
+                    slidesToShow: 3, // Display 3 slides on laptop screens
+                },
+            },
+        ],
+    };
+
+
+
+    return (
+        <Slider {...settings}>
+            <div className="supervisor">
+                <div className="image">
+                    <img src={profSimpsonImage}/>
+                </div>
+                <div className="info">
+                    <h5>Prof. Ben. K. Simpson</h5>
+                    <p>McGill University</p>
+                    <p>Supervisor</p>
+                </div>
+            </div>
+            <div className="supervisor">
+                <div className="image">
+                    <img src={profEllisImage}/>
+                </div>
+                <div className="info">
+                    <h5>Prof. William Otoo-Ellis</h5>
+                    <p>KNUST</p>
+                    <p>Supervisor</p>
+                </div>
+            </div>
+            <div className="supervisor">
+                <div className="image">
+                    <img src={profDebrahImage}/>
+                </div>
+                <div className="info">
+                    <h5>Prof. Edward W. Debrah</h5>
+                    <p>UESD</p>
+                    <p>Supervisor</p>
+                </div>
+            </div>
+            <div className="supervisor">
+                <div className="image">
+                    <img src={drEduseiImage}/>
+                </div>
+                <div className="info">
+                    <h5>Dr. Vida Edusei</h5>
+                    <p>KTU</p>
+                    <p>Supervisor</p>
+                </div>
+            </div>
+            <div className="supervisor">
+                <div className="image">
+                    <img src={ajimaImage}/>
+                </div>
+                <div className="info">
+                    <h5>Raphael Ajima</h5>
+                    <p>MasterCard Foundation</p>
+                    <p>Project Coordinator</p>
+                </div>
+            </div>
+
+            {/* Add more slides as needed */}
+        </Slider>
+    );
+};
+
+
 
 function AboutUsPage() {
 
@@ -234,96 +331,15 @@ function AboutUsPage() {
                     </div>
                 </div>
             </section>
-            <section className={'supervisors container'}>
-                {/*<div className="slider">
-                    <div>
-                        <img src={knustLogo}/>
-                            <h3>Supervisor 1</h3>
-                            <p>School 1</p>
-                            <p>Position 1</p>
-                    </div>
-                    <div>
-                        <img src={knustLogo}/>
-                            <h3>Supervisor 2</h3>
-                            <p>School 2</p>
-                            <p>Position 2</p>
-                    </div>
-                    <div>
-                        <img src={knustLogo}/>
-                            <h3>Supervisor 3</h3>
-                            <p>School 3</p>
-                            <p>Position 3</p>
-                    </div>
-                </div>*/}
-
+            <section className={'supervisors container mb-4'}>
                 <h5 className={'section-identifier'}>SUPERVISORS</h5>
-
-                <div className="slider">
-                    <div>
-                        <div className="supervisor">
-                            <div className="image">
-                                <img src={profSimpsonImage}/>
-                            </div>
-                            <div className="info">
-                                <h5>Prof. Ben. K. Simpson</h5>
-                                <p>McGill University</p>
-                                <p>Supervisor</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div className="supervisor">
-                            <div className="image">
-                                <img src={profEllisImage}/>
-                            </div>
-                            <div className="info">
-                                <h5>Prof. William Otoo-Ellis</h5>
-                                <p>KNUST</p>
-                                <p>Supervisor</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div className="supervisor">
-                            <div className="image">
-                                <img src={profDebrahImage}/>
-                            </div>
-                            <div className="info">
-                                <h5>Prof. Edward W. Debrah</h5>
-                                <p>UESD</p>
-                                <p>Supervisor</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div className="supervisor">
-                            <div className="image">
-                                <img src={drEduseiImage}/>
-                            </div>
-                            <div className="info">
-                                <h5>Dr. Vida Edusei</h5>
-                                <p>KTU</p>
-                                <p>Supervisor</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div className="supervisor">
-                            <div className="image">
-                                <img src={ajimaImage}/>
-                            </div>
-                            <div className="info">
-                                <h5>Raphael Ajima</h5>
-                                <p>MasterCard Foundation</p>
-                                <p>Project Coordinator</p>
-                            </div>
-                        </div>
-                    </div>
+                <div className="container">
+                    <Carousel/>
                 </div>
 
             </section>
-            <section className="project-assistants">
-                <h5 className={'section-identifier'}>ASSISTANTS</h5>
+            <section className="project-assistants mt-4">
+                <h5 className={'section-identifier mt-5'}>ASSISTANTS</h5>
                 <div className="container">
                     <div className="assistants-block">
                         <div className="assistant">

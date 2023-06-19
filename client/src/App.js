@@ -27,6 +27,16 @@ import AddNewsSegmentPage from "./auth-pages/project_manager/AddNewsSegmentPage"
 import SupervisorMenuPage from "./auth-pages/coordinator/supervisors/SupervisorMenuPage";
 import InternsMenuPage from "./auth-pages/coordinator/interns/InternsMenuPage";
 import AccommodationMenuPage from "./auth-pages/coordinator/accommodation/AccommodationMenuPage";
+import CreateThemePage from "./auth-pages/coordinator/internships/CreateThemePage";
+import ThemeListPage from "./auth-pages/coordinator/internships/ThemeListingPage";
+import ViewEditThemePage from "./auth-pages/coordinator/internships/ViewEditThemePage";
+import PartnersMenuPage from "./auth-pages/coordinator/partners/PartnersMenuPage";
+import SupervisorAssignmentPage from "./auth-pages/coordinator/internships/SupervisorAssignmentPage";
+
+
+function NotFound() {
+    return <h1>404 - Page Not Found</h1>;
+}
 
 
 
@@ -64,19 +74,23 @@ function App() {
                     <Route path='/intern/dashboard' exact element={<InternDashboard/>}/>
                     <Route path='/intern/account-activation' exact element={<ActivateAccountPage/>}/>
                     <Route path='/intern/detail-verification' exact element={<InternDetailVerificationPage/>}/>
-                    {/* <Route path='/internships/:id/' exact element={<ViewAdvertisementDetailsPage/>}/>*/}
+                     {/*<Route path='/internships/:id/' exact element={<ViewAdvertisementDetailsPage/>}/>*/}
 
                     <Route path='/coordinator/dashboard' exact element={<CoordinatorDashboard/>}/>
                     <Route path='/coordinator/internships/menu' exact element={<InternshipMenuPage/>}/>
                     <Route path='/coordinator/students/menu' exact element={<InternsMenuPage/>}/>
-                    <Route path='/coordinator/partners/menu' exact element={<InternshipMenuPage/>}/>
+                    <Route path='/coordinator/partners/menu' exact element={<PartnersMenuPage/>}/>
                     <Route path='/coordinator/supervisors/menu' exact element={<SupervisorMenuPage/>}/>
                     <Route path='/coordinator/accommodation/menu' exact element={<AccommodationMenuPage/>}/>
                     <Route path='/coordinator/support/menu' exact element={<InternshipMenuPage/>}/>
-
-
+                    <Route path='/coordinator/create-theme' exact element={<CreateThemePage/>}/>
+                    <Route path='/coordinator/themes' exact element={<ThemeListPage/>}/>
+                    <Route path='/coordinator/assign-supervisors' exact element={<SupervisorAssignmentPage/>}/>
+                    <Route path='/coordinator/themes/:themeId/' exact element={<ViewEditThemePage/>}/>
 
                     <Route path='/project-assistant/news/add' exact element={<AddNewsSegmentPage/>}/>
+
+                    <Route path='*' element={<NotFound/>} />
                 </Routes>
             </Router>
         </AuthProvider>

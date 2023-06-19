@@ -189,23 +189,31 @@ footer{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    border: 1px solid #f90;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .supervisor h5,.supervisor p{
     margin: 0 auto;
 }
+.supervisor .info{
+    text-align: center;
+}
 
 .image {
-    flex: 0 0 100px;
-    height: 100px;
-    margin-right: 20px;
-    border-radius: 50%;
+    display: flex;
+    justify-content: center;
     overflow: hidden;
 }
 
 .image img {
-    width: 100%;
-    height: 100%;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
     object-fit: cover;
 }
 .assistants-block{
@@ -257,6 +265,12 @@ h3, p {
 }
 
 @media (max-width: 576px) {
+
+    .image img {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+    }
 
     .navbar-links-block {
         display: none;

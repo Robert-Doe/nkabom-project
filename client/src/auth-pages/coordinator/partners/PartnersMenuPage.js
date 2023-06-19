@@ -1,11 +1,11 @@
 import React from 'react';
 import CoordinatorSideNav from "../CoordinatorSideNav";
 import CoordinatorNav from "../../../pages/reusables/CoordinatorNav";
-import style from './CoordinatorAccommodation.module.css'
+import style from './CoordinatorPartners.module.css'
 import {MdAssignmentTurnedIn, MdViewList} from "react-icons/md";
 import {BiUserPlus} from "react-icons/bi"
 import {Link} from "react-router-dom";
-import {FaUserTie} from "react-icons/fa";
+import {FaChartBar, FaComments, FaFileUpload, FaHandshake, FaUserPlus, FaUserTie} from "react-icons/fa";
 import useCoordinatorAuth from "../../../hooks/useCoordinatorAuth";
 import {GiHouse} from "react-icons/gi";
 
@@ -23,16 +23,48 @@ function PartnersMenuPage(props) {
                             <div className="col-md-4">
                                 <Link to="#" className={style.menuLink}>
                                     <div className={`${style.internshipMenuContent}`}>
-                                        <GiHouse size={24}/>
-                                        <span className={`${style.menuTitle}`}>Upload Accommodation</span>
+                                        <FaUserPlus size={24}/>
+                                        <span className={`${style.menuTitle}`}>Manage Partners</span>
                                     </div>
                                 </Link>
                             </div>
                             <div className="col-md-4">
                                 <Link to={'#'} className={style.menuLink}>
                                     <div className={`${style.internshipMenuContent}`}>
-                                        <MdViewList size={24} />
-                                        <span className={`${style.menuTitle}`}>View All</span>
+                                        <FaHandshake size={24}/>
+                                        <span className={`${style.menuTitle}`}>Partner Collaboration</span>
+                                    </div>
+                                </Link>
+                            </div>
+                            <div className="col-md-4">
+                                <Link to={'#'} className={style.menuLink}>
+                                    <div className={`${style.internshipMenuContent}`}>
+                                        <FaComments size={24}/>
+                                        <span className={`${style.menuTitle}`}>Partner Feedback</span>
+                                    </div>
+                                </Link>
+                            </div>
+                            <div className="col-md-4">
+                                <Link to={'#'} className={style.menuLink}>
+                                    <div className={`${style.internshipMenuContent}`}>
+                                        <FaComments size={24}/>
+                                        <span className={`${style.menuTitle}`}>Partner Feedback</span>
+                                    </div>
+                                </Link>
+                            </div>
+                            <div className="col-md-4">
+                                <Link to={'#'} className={style.menuLink}>
+                                    <div className={`${style.internshipMenuContent}`}>
+                                        <FaFileUpload size={24}/>
+                                        <span className={`${style.menuTitle}`}>Partner Resources</span>
+                                    </div>
+                                </Link>
+                            </div>
+                            <div className="col-md-4">
+                                <Link to={'#'} className={style.menuLink}>
+                                    <div className={`${style.internshipMenuContent}`}>
+                                        <FaChartBar size={24}/>
+                                        <span className={`${style.menuTitle}`}>Reports and Analytics</span>
                                     </div>
                                 </Link>
                             </div>

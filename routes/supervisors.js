@@ -110,7 +110,7 @@ router.post('/email',(req,res)=>{
         from: 'info@codeden.org',
         to: 'gracealiko08@gmail.com',
         subject: 'Mailer Alert',
-        text: "Dear grace, the mailing portion of the API is working. Start your UI, we're halfway through. It's left with the payment API"
+        text: "Dear John, the mailing portion of the API is working. Start your UI, we're halfway through. It's left with the payment API"
     };
 
 // Send the email

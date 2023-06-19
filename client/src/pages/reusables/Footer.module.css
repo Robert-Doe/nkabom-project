@@ -1,0 +1,22 @@
+.bgGrey{
+    background-color: rgba(152, 152, 150, 0.3)
+}
+
+.partnerInstitutionHeader{
+    color: #c4c0c4;
+}
+
+
+.partnerInstitutionList{
+    list-style: none;
+    color: rgba(171, 168, 171, 0.5);
+}
+
+.partnerInstitutionList li:hover{
+    color: #eeddee;
+}
+
+.mcGillAddress{
+    color: rgba(171, 168, 171, 0.5);
+    list-style: none;
+}

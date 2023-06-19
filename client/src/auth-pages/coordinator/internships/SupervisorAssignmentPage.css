@@ -1,0 +1,11 @@
+.card.selected {
+    background-color: #ffb874;
+}
+
+.card.selected .card-body {
+    border: 2px solid #8c0000;
+}
+
+.icon.selected-icon {
+    color: #f8f9fa;
+}

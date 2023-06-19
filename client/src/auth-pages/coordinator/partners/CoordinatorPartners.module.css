@@ -1,12 +1,15 @@
 .internshipMenuContent{
     background-color: #f8ad52;
-    margin: 1em;
-    border-radius: 1.5em;
-    padding: 3em 2em;
+    border-radius: 0.5em;
+    padding: 2em 2em;
     display: flex;
     flex-direction: column;
     cursor: pointer;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 16px;
+    transition: box-shadow 0.3s ease;
 }
 
 .menuTitle{

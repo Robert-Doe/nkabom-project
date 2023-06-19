@@ -13,6 +13,8 @@ const internRouter= require('./routes/interns')
 const supervisorRouter= require('./routes/supervisors')
 const coordinatorRouter= require('./routes/coordinators')
 const newsRouter= require('./routes/news')
+const internshipThemeRouter= require('./routes/internship-themes')
+const requestThemeFiles= require('./routes/requested-theme-files')
 
 app.use(express.json())
 
@@ -42,6 +44,8 @@ app.use('/api/interns',internRouter);
 app.use('/api/supervisors',supervisorRouter);
 app.use('/api/coordinators',coordinatorRouter);
 app.use('/api/news', newsRouter);
+app.use('/api/internship-themes', internshipThemeRouter);
+app.use('/api/requested-theme-files', requestThemeFiles);
 
 app.get('/',(req,res)=>{
     res.send("Over Here Nothing dey /")

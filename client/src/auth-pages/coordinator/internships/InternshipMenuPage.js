@@ -20,7 +20,7 @@ function InternshipMenuPage(props) {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-4">
-                                <Link to="#" className={style.menuLink}>
+                                <Link to="/coordinator/create-theme" className={style.menuLink}>
                                     <div className={`${style.internshipMenuContent}`}>
                                         <BsBriefcaseFill size={24} />
                                         <span className={`${style.menuTitle}`}>Create Theme</span>
@@ -28,7 +28,7 @@ function InternshipMenuPage(props) {
                                 </Link>
                             </div>
                             <div className="col-md-4">
-                                <Link to={'#'} className={style.menuLink}>
+                                <Link to={'/coordinator/themes'} className={style.menuLink}>
                                     <div className={`${style.internshipMenuContent}`}>
                                         <MdViewList size={24} />
                                         <span className={`${style.menuTitle}`}>View All Themes</span>
@@ -36,7 +36,7 @@ function InternshipMenuPage(props) {
                                 </Link>
                             </div>
                             <div className="col-md-4">
-                                <Link to={'#'} className={style.menuLink}>
+                                <Link to={'/coordinator/assign-supervisors'} className={style.menuLink}>
                                     <div className={`${style.internshipMenuContent}`}>
                                         <BiUserPlus size={24} />
                                         <span className={`${style.menuTitle}`}>Assign Supervisors</span>
