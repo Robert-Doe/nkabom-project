@@ -18,12 +18,16 @@ function SupervisorLoginPage(props) {
             passKey: passKeyRef.current.value
         })
             .then(r => {
+                alert("Returned from Server")
+
                 if(r.status===200){
                     alert("Signing and Redirecting")
                     localStorage.setItem('accessToken',r.data.token)
                     localStorage.setItem('supervisor',JSON.stringify(r.data.supervisor))
                     navigate('/supervisor/dashboard')
                 }
+        }).catch(error=>{
+            console.log("Catching Error in the Catch Block")
         })
     }
 

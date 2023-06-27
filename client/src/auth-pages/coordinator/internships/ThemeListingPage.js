@@ -2,7 +2,7 @@ import axios from 'axios';
 import {useEffect, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import CoordinatorNav from "../../../pages/reusables/CoordinatorNav";
-import {BarLoader, CircleLoader} from "react-spinners";
+import {BarLoader, RiseLoader} from "react-spinners";
 
 function ThemeListPage() {
     const [themes, setThemes] = useState([]);
@@ -39,7 +39,7 @@ function ThemeListPage() {
             <div className="container mt-1 p-5">
 
                 <h4 className={'mb-3'}>Theme List</h4>
-                {isLoading && <div className="d-flex w-100 justify-content-center"><CircleLoader/></div>}
+                {isLoading && <div className="d-flex w-100 justify-content-center"><RiseLoader/></div>}
                 {!isLoading && <table className="table table-sm table-bordered">
                     <thead className={'thead-dark'}>
                     <tr>

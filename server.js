@@ -14,7 +14,9 @@ const supervisorRouter= require('./routes/supervisors')
 const coordinatorRouter= require('./routes/coordinators')
 const newsRouter= require('./routes/news')
 const internshipThemeRouter= require('./routes/internship-themes')
-const requestThemeFiles= require('./routes/requested-theme-files')
+const requestThemeFilesRouter= require('./routes/requested-theme-files')
+const accommodationRouter= require('./routes/accommodations')
+const internshipOpportunitiesRouter= require('./routes/internship-opportunities')
 
 app.use(express.json())
 
@@ -45,7 +47,9 @@ app.use('/api/supervisors',supervisorRouter);
 app.use('/api/coordinators',coordinatorRouter);
 app.use('/api/news', newsRouter);
 app.use('/api/internship-themes', internshipThemeRouter);
-app.use('/api/requested-theme-files', requestThemeFiles);
+app.use('/api/requested-theme-files', requestThemeFilesRouter);
+app.use('/api/accommodations', accommodationRouter);
+app.use('/api/internship-opportunities', internshipOpportunitiesRouter);
 
 app.get('/',(req,res)=>{
     res.send("Over Here Nothing dey /")

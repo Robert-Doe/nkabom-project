@@ -10,8 +10,35 @@
 .internMenu{
     width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.menuContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+}
+
+/*svg{
+    fill: #9C3730;
+    !*  stroke: #9C3730;*!
+}*/
+.internMenu svg{
+    stroke: #9C3730;
+    fill: #9C3730;
+}
+
+.internMenu path{
+    /* fill: #9C3730;*/
+    stroke: #9C3730;
+}
+
+.internMenu p{
+    font-weight: bolder;
+}
+
+.internMenu-flex .menu{
+    margin: 2em 0;
 }

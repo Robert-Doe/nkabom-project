@@ -28,6 +28,9 @@ function ViewAdvertisementDetailsPage() {
                 valuable experience in a dynamic and supportive environment.
 
                 Apply now and take the first step towards an exciting career in web development with Google Ghana!</p>
+            <div className="d-flex justify-content-end">
+                <button className="btn btn-warning">Apply</button>
+            </div>
         </main>
     </section>)
 }

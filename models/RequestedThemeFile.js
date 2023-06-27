@@ -14,6 +14,10 @@ const RequestedThemeFile = db.define('RequestedThemeFile', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    type: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
 });
 
 module.exports = RequestedThemeFile;

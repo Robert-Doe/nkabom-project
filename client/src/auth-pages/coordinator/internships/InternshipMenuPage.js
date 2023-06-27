@@ -44,7 +44,7 @@ function InternshipMenuPage(props) {
                                 </Link>
                             </div>
                             <div className="col-md-4">
-                                <Link to={'#'} className={style.menuLink}>
+                                <Link to={'/coordinator/opportunities/create-advertisement/'} className={style.menuLink}>
                                     <div className={`${style.internshipMenuContent}`}>
                                         <BsFillMegaphoneFill size={24} />
                                         <span className={`${style.menuTitle}`}>Advertise Opportunity</span>

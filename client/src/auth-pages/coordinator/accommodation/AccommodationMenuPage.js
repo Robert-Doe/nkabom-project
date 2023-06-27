@@ -29,6 +29,14 @@ function AccommodationMenuPage(props) {
                                 </Link>
                             </div>
                             <div className="col-md-4">
+                                <Link to="#" className={style.menuLink}>
+                                    <div className={`${style.internshipMenuContent}`}>
+                                        <GiHouse size={24}/>
+                                        <span className={`${style.menuTitle}`}>Add Facility</span>
+                                    </div>
+                                </Link>
+                            </div>  q
+                            <div className="col-md-4">
                                 <Link to={'#'} className={style.menuLink}>
                                     <div className={`${style.internshipMenuContent}`}>
                                         <MdViewList size={24} />

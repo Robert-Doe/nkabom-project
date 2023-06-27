@@ -37,7 +37,7 @@ function generateToken(staff) {
 async function authenticateSupervisor(staffId, password) {
     const supervisorAuth = await SupervisorAuth.findByPk(staffId);
 
-    console.log(supervisorAuth)
+    //console.log(supervisorAuth)
 
     if (!supervisorAuth) {
         // The user doesn't exist in the database
@@ -254,8 +254,11 @@ router.delete('/:id', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     const {staffId, passKey} = req.body;
+    console.log(req.body)
 
     const supervisor = await authenticateSupervisor(staffId, passKey);
+    console.log(supervisor)
+    console.log("Entered Here")
 
     if (!supervisor) {
         return res.status(401).json({message: 'Invalid email or password'});

@@ -549,6 +549,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import OpaqueNav from "../../../pages/reusables/OpaqueNav";
 import axios from "axios";
 import {IoMdClose} from "react-icons/io";
+import CoordinatorNav from "../../../pages/reusables/CoordinatorNav";
 const {v4: uuidv4} = require("uuid");
 
 function CreateThemePage(props) {
@@ -580,8 +581,8 @@ function CreateThemePage(props) {
 
 
     const addFileRequestField = () => {
-        const id=uuidv4()
-        setFileRequests([...fileRequests, { id, name: '', type: '' }]);
+       // const id=uuidv4()
+        setFileRequests([...fileRequests, { name: '', type: '' }]);
     };
 
     const removeFileRequestField = (index) => {
@@ -623,14 +624,21 @@ function CreateThemePage(props) {
         const comments = commentsRef.current.value;
         setIsSubmitting(true);
 
-        try {
+        console.log(fileRequests)
+
+      try {
             const response = await axios.post('http://localhost:9999/api/internship-themes', {
                 themeName,
                 startDate,
                 endDate,
                 comments,
-                fileRequests: fileRequestFields.map((field) => field.value),
+                fileRequests: fileRequests.map((field) => field.value),
             });
+
+          const fileResponse = await axios.post('http://localhost:9999/api/requested-theme-files/multiple-upload', {
+              requestedFiles:fileRequests,
+              themeId: response.data.id
+          });
 
             console.log(fileRequests)
 
@@ -653,7 +661,7 @@ function CreateThemePage(props) {
 
     return (
         <section>
-            <OpaqueNav />
+            <CoordinatorNav />
             <main className={`container`}>
                 <div className="container mt-1 p-5">
                     <form onSubmit={createTheme}>

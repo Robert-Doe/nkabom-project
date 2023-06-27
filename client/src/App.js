@@ -32,12 +32,17 @@ import ThemeListPage from "./auth-pages/coordinator/internships/ThemeListingPage
 import ViewEditThemePage from "./auth-pages/coordinator/internships/ViewEditThemePage";
 import PartnersMenuPage from "./auth-pages/coordinator/partners/PartnersMenuPage";
 import SupervisorAssignmentPage from "./auth-pages/coordinator/internships/SupervisorAssignmentPage";
+import CreateInternalInternshipAdvertisementPage
+    from "./auth-pages/coordinator/internships/CreateInternalInternshipAdvertisementPage";
+import CreateOpportunityAdvertisement from "./auth-pages/coordinator/internships/CreateOpportunityAdvertisement";
+import CreateAccommodationPage from "./auth-pages/coordinator/accommodation/CreateAccommodationPage";
+import AccommodationsPage from "./auth-pages/coordinator/accommodation/AccommodationsPage";
+import ViewAdvertisementDetailsPage from "./auth-pages/intern/ViewAdvertisementDetailsPage";
 
 
 function NotFound() {
     return <h1>404 - Page Not Found</h1>;
 }
-
 
 
 function App() {
@@ -61,10 +66,9 @@ function App() {
                     <Route path='/contact' exact element={<ContactPage/>}/>
 
                     <Route path='/map' exact element={<InternshipListingMapPage/>}/>
-                    <Route path='/internships' exact element={<InternshipListings/>}/>
+                    <Route path='/intern/internships' exact element={<InternshipListings/>}/>
                     <Route path='/accommodation' exact element={<AccommodationListings/>}/>
-                    <Route path='/scholarships' exact element={<ScholarshipListings/>}/>
-
+                    <Route path='/interns/scholarships' exact element={<ScholarshipListings/>}/>
 
 
                     <Route path='/supervisor/dashboard' exact element={<SupervisorDashboard/>}/>
@@ -74,7 +78,7 @@ function App() {
                     <Route path='/intern/dashboard' exact element={<InternDashboard/>}/>
                     <Route path='/intern/account-activation' exact element={<ActivateAccountPage/>}/>
                     <Route path='/intern/detail-verification' exact element={<InternDetailVerificationPage/>}/>
-                     {/*<Route path='/internships/:id/' exact element={<ViewAdvertisementDetailsPage/>}/>*/}
+                    <Route path='/internships/:id/' exact element={<ViewAdvertisementDetailsPage/>}/>
 
                     <Route path='/coordinator/dashboard' exact element={<CoordinatorDashboard/>}/>
                     <Route path='/coordinator/internships/menu' exact element={<InternshipMenuPage/>}/>
@@ -82,19 +86,23 @@ function App() {
                     <Route path='/coordinator/partners/menu' exact element={<PartnersMenuPage/>}/>
                     <Route path='/coordinator/supervisors/menu' exact element={<SupervisorMenuPage/>}/>
                     <Route path='/coordinator/accommodation/menu' exact element={<AccommodationMenuPage/>}/>
+                    <Route path='/coordinator/accommodation' exact element={<AccommodationsPage/>}/>
+                    <Route path='/coordinator/accommodation/create-accommodation' exact element={<CreateAccommodationPage/>}/>
                     <Route path='/coordinator/support/menu' exact element={<InternshipMenuPage/>}/>
                     <Route path='/coordinator/create-theme' exact element={<CreateThemePage/>}/>
                     <Route path='/coordinator/themes' exact element={<ThemeListPage/>}/>
                     <Route path='/coordinator/assign-supervisors' exact element={<SupervisorAssignmentPage/>}/>
                     <Route path='/coordinator/themes/:themeId/' exact element={<ViewEditThemePage/>}/>
+                    <Route path='/coordinator/opportunities/create-advertisement/' exact
+                           element={<CreateOpportunityAdvertisement/>}/>
 
                     <Route path='/project-assistant/news/add' exact element={<AddNewsSegmentPage/>}/>
 
-                    <Route path='*' element={<NotFound/>} />
+                    <Route path='*' element={<NotFound/>}/>
                 </Routes>
             </Router>
         </AuthProvider>
-      )
+    )
 }
 
 export default App;

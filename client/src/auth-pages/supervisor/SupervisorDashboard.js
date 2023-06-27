@@ -15,11 +15,11 @@ function SupervisorDashboard(){
 
     return (
         <section>
-            <SupervisorNav firstName={supervisor.firstName} photoUrl={supervisor.photoUrl}/>
-        <main className={'container'}>
+            {supervisor && <SupervisorNav firstName={supervisor.firstName} photoUrl={supervisor.photoUrl}/>}
+            {supervisor && <main className={'container'}>
             <h4 className={'text-dark text-center my-2'}>Welcome back, {`${supervisor.firstName} ${supervisor.lastName}`}</h4>
 
-            <section className={'container mt-5'}>
+            {/*<section className={'container mt-5'}>
                 <div className="row">
                     <div className="col-md-4 d-flex justify-content-between py-2 border">
                         <AiFillBulb fontSize={30}/> <span className={'text'}> Internships</span> <span className={'count'}>20</span>
@@ -32,9 +32,9 @@ function SupervisorDashboard(){
                     </div>
                 </div>
 
-            </section>
+            </section>*/}
             <section className="container d-flex justify-content-center">
-                <div className={'supervisor-menu-flex mt-5'}>
+                <div className={'supervisor-menu-flex mt-5 py-5'}>
                     <div className="supervisor-menu">
                         <GiGraduateCap fontSize={100}/>
                         <p>Opportunities</p>
@@ -62,8 +62,7 @@ function SupervisorDashboard(){
                 </div>
             </section>
 
-        </main>
-
+        </main>}
     </section>
     )
 }
