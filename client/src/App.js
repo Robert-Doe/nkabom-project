@@ -38,11 +38,25 @@ import CreateOpportunityAdvertisement from "./auth-pages/coordinator/internships
 import CreateAccommodationPage from "./auth-pages/coordinator/accommodation/CreateAccommodationPage";
 import AccommodationsPage from "./auth-pages/coordinator/accommodation/AccommodationsPage";
 import ViewAdvertisementDetailsPage from "./auth-pages/intern/ViewAdvertisementDetailsPage";
-
+import NotFoundImage from './404.png'
+import SupervisorVisitationReportPage from "./auth-pages/coordinator/supervisors/SupervisorVisitationReportPage";
+import InternUploadPage from "./auth-pages/coordinator/interns/InternUploadPage";
+import SupervisorUploadPage from "./auth-pages/coordinator/supervisors/SupervisorUploadPage";
+import AddInternPage from "./auth-pages/coordinator/interns/AddInternPage";
+import ViewAllInternsPage from "./auth-pages/coordinator/interns/ViewAllInternsPage";
+import ViewAllSupervisorsPage from "./auth-pages/coordinator/supervisors/ViewAllSupervisorsPage";
+import ViewAllAccommodationsPage from "./auth-pages/coordinator/accommodation/ViewAllAccommodationPage";
+import ViewSingleAccommodationPage from "./auth-pages/coordinator/accommodation/ViewSingleAccommodationPage";
+import EditAccommodationPage from "./auth-pages/coordinator/accommodation/EditAccommodationPage";
+import UploadFacilitiesPage from "./auth-pages/coordinator/accommodation/UploadFacilitiesPage";
+import AddSupervisorPage from "./auth-pages/coordinator/supervisors/AddSupervisorPage";
 
 function NotFound() {
-    return <h1>404 - Page Not Found</h1>;
+    return <section>
+    <img src={NotFoundImage} width={'100%'}/>
+    </section> ;
 }
+
 
 
 function App() {
@@ -87,14 +101,24 @@ function App() {
                     <Route path='/coordinator/supervisors/menu' exact element={<SupervisorMenuPage/>}/>
                     <Route path='/coordinator/accommodation/menu' exact element={<AccommodationMenuPage/>}/>
                     <Route path='/coordinator/accommodation' exact element={<AccommodationsPage/>}/>
-                    <Route path='/coordinator/accommodation/create-accommodation' exact element={<CreateAccommodationPage/>}/>
+                    <Route path='/coordinator/accommodation/add-facility' exact element={<CreateAccommodationPage/>}/>
+                    <Route path='/coordinator/accommodation/upload-facilities' exact element={<UploadFacilitiesPage/>}/>
+                    <Route path='/coordinator/facilities' exact element={<ViewAllAccommodationsPage/>}/>
+                    <Route path='/coordinator/facilities/:accommodationId' exact element={<ViewSingleAccommodationPage/>}/>
+                    <Route path='/coordinator/facilities/:accommodationId/edit' exact element={<EditAccommodationPage/>}/>
                     <Route path='/coordinator/support/menu' exact element={<InternshipMenuPage/>}/>
                     <Route path='/coordinator/create-theme' exact element={<CreateThemePage/>}/>
                     <Route path='/coordinator/themes' exact element={<ThemeListPage/>}/>
                     <Route path='/coordinator/assign-supervisors' exact element={<SupervisorAssignmentPage/>}/>
+                    <Route path='/coordinator/intern-upload' exact element={<InternUploadPage/>}/>
+                    <Route path='/coordinator/add-intern' exact element={<AddInternPage/>}/>
+                    <Route path='/coordinator/interns' exact element={<ViewAllInternsPage/>}/>
+                    <Route path='/coordinator/supervisors' exact element={<ViewAllSupervisorsPage/>}/>
+                    <Route path='/coordinator/add-supervisor' exact element={<AddSupervisorPage/>}/>
+                    <Route path='/coordinator/supervisor-upload' exact element={<SupervisorUploadPage/>}/>
                     <Route path='/coordinator/themes/:themeId/' exact element={<ViewEditThemePage/>}/>
-                    <Route path='/coordinator/opportunities/create-advertisement/' exact
-                           element={<CreateOpportunityAdvertisement/>}/>
+                    <Route path='/coordinator/opportunities/create-advertisement/' exact element={<CreateOpportunityAdvertisement/>}/>
+                    <Route path='/coordinator/visitation/reports/' exact element={<SupervisorVisitationReportPage/>}/>
 
                     <Route path='/project-assistant/news/add' exact element={<AddNewsSegmentPage/>}/>
 

@@ -26,11 +26,11 @@ const InternshipOpportunity = sequelize.define(
         },
         startDate: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
         },
         endDate: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
         },
         phone: {
             type: DataTypes.STRING,
@@ -46,7 +46,7 @@ const InternshipOpportunity = sequelize.define(
         },
         region: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
     }
 );

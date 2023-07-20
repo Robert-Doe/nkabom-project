@@ -12,6 +12,7 @@ app.use(cors());
 const internRouter= require('./routes/interns')
 const supervisorRouter= require('./routes/supervisors')
 const coordinatorRouter= require('./routes/coordinators')
+const departmentRouter= require('./routes/departments')
 const newsRouter= require('./routes/news')
 const internshipThemeRouter= require('./routes/internship-themes')
 const requestThemeFilesRouter= require('./routes/requested-theme-files')
@@ -45,6 +46,7 @@ app.use('/gigs',require('./routes/gigs'));
 app.use('/api/interns',internRouter);
 app.use('/api/supervisors',supervisorRouter);
 app.use('/api/coordinators',coordinatorRouter);
+app.use('/api/departments',departmentRouter);
 app.use('/api/news', newsRouter);
 app.use('/api/internship-themes', internshipThemeRouter);
 app.use('/api/requested-theme-files', requestThemeFilesRouter);

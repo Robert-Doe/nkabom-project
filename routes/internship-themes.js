@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const InternshipTheme = require('../models/InternshipTheme');
+const ThemeSupervisor = require('../models/ThemeSupervisor');
 const { v4: uuidv4 } = require('uuid');
 const multer = require('multer');
 const xlsx = require('xlsx');
@@ -31,10 +32,82 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.post('/:id/supervisors', async (req, res) => {
+    try {
+        const { themeId, staffId, appointmentDate } = req.body;
+
+        console.log("Entering Internship Theme Supervisors");
+
+        const themeSupervisor = await ThemeSupervisor.create({
+            themeId,
+            staffId,
+            appointmentDate
+        });
+
+        res.status(201).json(themeSupervisor);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+
+
 // Upload supervisors from Excel file
-router.post('/:id/supervisors', upload.single('file'), (req, res) => {
-    const uploadDir = 'uploads/supervisors';
+/*
+router.post('/:id/supervisors', upload.single('file'), async (req, res) => {
+    const uploadDir = 'uploads/supervisors/';
     const filePath = uploadDir + req.file.originalname;
+    console.log(filePath)
+    //Create the directory if it doesn't exist
+    if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir);
+    }
+
+    fs.renameSync(req.file.path, filePath);
+
+    const workbook = xlsx.readFile(filePath);
+    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+
+    const range = xlsx.utils.decode_range(worksheet['!ref']);
+    const numRows = range.e.r - range.s.r + 1;
+
+    const columnNames = [];
+    for (let c = range.s.c; c <= range.e.c; c++) {
+        const cellAddress = xlsx.utils.encode_cell({r: range.s.r, c});
+        const columnName = worksheet[cellAddress].v;
+        columnNames.push(columnName);
+    }
+
+    const rowData = [];
+    for (let r = range.s.r + 1; r <= range.e.r; r++) {
+        const rowObject = {};
+        for (let c = range.s.c; c <= range.e.c; c++) {
+            const columnName = columnNames[c - range.s.c];
+            const cellAddress = xlsx.utils.encode_cell({r, c});
+            //console.log(worksheet)
+            rowObject[columnName] = worksheet[cellAddress].v;
+        }
+        rowData.push(rowObject);
+    }
+
+    try{
+        await ThemeSupervisor.bulkCreate(rowData, {ignoreDuplicates: true})
+
+        res.json(rowData);
+    }catch (err){
+        console.log("Error Insertion of Builk")
+    }
+
+
+});
+*/
+
+router.post('/:id/supervisors-upload', upload.single('file'), async (req, res) => {
+    const uploadDir = 'uploads/supervisors/';
+    const filePath = uploadDir + req.file.originalname;
+    console.log(filePath);
 
     // Create the directory if it doesn't exist
     if (!fs.existsSync(uploadDir)) {
@@ -52,7 +125,14 @@ router.post('/:id/supervisors', upload.single('file'), (req, res) => {
     const columnNames = [];
     for (let c = range.s.c; c <= range.e.c; c++) {
         const cellAddress = xlsx.utils.encode_cell({ r: range.s.r, c });
-        const columnName = worksheet[cellAddress].v;
+        let columnName;
+        try {
+            columnName = worksheet[cellAddress].v;
+        } catch (error) {
+            console.log(`Column not found at address: ${cellAddress}`);
+            //columnName = '';
+            continue;
+        }
         columnNames.push(columnName);
     }
 
@@ -62,14 +142,28 @@ router.post('/:id/supervisors', upload.single('file'), (req, res) => {
         for (let c = range.s.c; c <= range.e.c; c++) {
             const columnName = columnNames[c - range.s.c];
             const cellAddress = xlsx.utils.encode_cell({ r, c });
-            const cellValue = worksheet[cellAddress].v;
-            rowObject[columnName] = cellValue;
+            let cellValue;
+            try {
+                cellValue = worksheet[cellAddress].v;
+            } catch (error) {
+                console.log(`Value not found at address: ${cellAddress}`);
+                cellValue = '';
+            }
+            if(columnName){
+                rowObject[columnName] = cellValue;
+            }
         }
         rowData.push(rowObject);
     }
 
-    res.json(rowData);
+    try {
+        await ThemeSupervisor.bulkCreate(rowData, { ignoreDuplicates: true });
+        res.json(rowData);
+    } catch (err) {
+        console.log("Error during bulk insertion");
+    }
 });
+
 
 // Get all internship themes
 router.get('/', async (req, res) => {

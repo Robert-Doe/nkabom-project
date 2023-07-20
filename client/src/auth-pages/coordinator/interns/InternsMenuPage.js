@@ -21,7 +21,7 @@ function InternsMenuPage(props) {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-4">
-                                <Link to="#" className={style.menuLink}>
+                                <Link to="/coordinator/intern-upload" className={style.menuLink}>
                                     <div className={`${style.internshipMenuContent}`}>
                                         <FaUserTie size={24} />
                                         <span className={`${style.menuTitle}`}>Upload Interns</span>
@@ -37,7 +37,7 @@ function InternsMenuPage(props) {
                                 </Link>
                             </div>
                             <div className="col-md-4">
-                                <Link to={'#'} className={style.menuLink}>
+                                <Link to={'/coordinator/add-intern'} className={style.menuLink}>
                                     <div className={`${style.internshipMenuContent}`}>
                                         <BiUserPlus size={24} />
                                         <span className={`${style.menuTitle}`}>Add Interns</span>

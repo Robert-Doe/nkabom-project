@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.94e09cf5.css",
-    "main.js": "/static/js/main.ee86e889.js",
+    "main.css": "/static/css/main.428ab02c.css",
+    "main.js": "/static/js/main.2917f048.js",
     "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
     "static/media/supervisor_login_aside.png": "/static/media/supervisor_login_aside.285e73de54da03ad0bc9.png",
     "static/media/ktu_login_background.png": "/static/media/ktu_login_background.a2e41cb921042a3ed808.png",
@@ -17,6 +17,7 @@
     "static/media/mcgill-logo.png": "/static/media/mcgill-logo.cb8731e3898089886924.png",
     "static/media/ktu-logo.png": "/static/media/ktu-logo.5659627e16880acb3db1.png",
     "static/media/prof_simpson.jpg": "/static/media/prof_simpson.62e081f47a78b4258a1a.jpg",
+    "static/media/404.png": "/static/media/404.2e9b89a1bee52974d925.png",
     "static/media/dr_edusei.jpg": "/static/media/dr_edusei.965a15d02ec5c73a34e4.jpg",
     "static/media/nkabom_login_bg.png": "/static/media/nkabom_login_bg.5366491cba8bdf08ddcd.png",
     "static/media/nkabom_login_dark_bg.png": "/static/media/nkabom_login_dark_bg.0aac561f96d0e2aa53b5.png",
@@ -25,14 +26,18 @@
     "static/media/ajima.jpg": "/static/media/ajima.6a03c41f3641e0feb235.jpg",
     "static/media/coordinator_login_aside.png": "/static/media/coordinator_login_aside.e3ce3b956b698cc431f8.png",
     "static/media/prof_ellis.jpg": "/static/media/prof_ellis.d093b24cf1ca68b246c6.jpg",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "static/media/background.svg": "/static/media/background.087b60f3ad88141b80cd.svg",
-    "main.94e09cf5.css.map": "/static/css/main.94e09cf5.css.map",
-    "main.ee86e889.js.map": "/static/js/main.ee86e889.js.map",
+    "main.428ab02c.css.map": "/static/css/main.428ab02c.css.map",
+    "main.2917f048.js.map": "/static/js/main.2917f048.js.map",
     "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.94e09cf5.css",
-    "static/js/main.ee86e889.js"
+    "static/css/main.428ab02c.css",
+    "static/js/main.2917f048.js"
   ]
 }

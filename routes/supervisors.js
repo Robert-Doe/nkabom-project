@@ -2,30 +2,27 @@
 const express = require('express');
 const router = express.Router();
 var crypto = require('crypto');
-// Import the Supervisor model
-const Supervisor = require('../models/supervisor');
+// Import the Supervisor modelSS
+const Supervisor = require('../models/Supervisor');
 const SupervisorAuth = require('../models/SupervisorAuth')
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const nodemailer = require('nodemailer');
 const {verifyPasswordArgon, hashPasswordArgon} = require("../library/hashing");
+const multer = require("multer");
+const fs = require("fs");
+const xlsx = require("xlsx");
+const Intern = require("../models/Intern");
+const dotenv = require("dotenv");
+const Accommodation = require("../models/Accommodation");
+
+dotenv.config()
+
+const upload = multer({ dest: 'uploads/supervisors' });
+
 const secretKey = process.env.SUPERVISOR_ACCESS_TOKEN_SECRET;
 
-/*
 
-async function hashPassword(password) {
-    const saltRounds = 10;
-
-    try {
-        const hash = (await bcrypt.hash(password, saltRounds)).toString();
-        console.log(hash)
-        return hash;
-    } catch (error) {
-        console.error(error);
-        return null;
-    }
-}
-*/
 
 // Generate a JWT token for a given user
 function generateToken(staff) {
@@ -89,6 +86,58 @@ function authenticateRequest(req, res, next) {
         next();
     });
 }
+
+
+
+// Upload accommodations from Excel file
+router.post('/upload', upload.single('file'), async (req, res) => {
+    const uploadDir = 'uploads/supervisors/';
+    const filePath = uploadDir + req.file.originalname;
+    console.log(filePath);
+
+    //Create the directory if it doesn't exist
+    if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir);
+    }
+
+    fs.renameSync(req.file.path, filePath);
+
+    const workbook = xlsx.readFile(filePath);
+    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+
+    const range = xlsx.utils.decode_range(worksheet['!ref']);
+    const numRows = range.e.r - range.s.r + 1;
+
+    const columnNames = [];
+    for (let c = range.s.c; c <= range.e.c; c++) {
+        const cellAddress = xlsx.utils.encode_cell({ r: range.s.r, c });
+        const columnName = worksheet[cellAddress].v;
+        columnNames.push(columnName);
+    }
+
+    const rowData = [];
+    for (let r = range.s.r + 1; r <= range.e.r; r++) {
+        const rowObject = {};
+        for (let c = range.s.c; c <= range.e.c; c++) {
+            const columnName = columnNames[c - range.s.c];
+            const cellAddress = xlsx.utils.encode_cell({ r, c });
+            if(columnName && worksheet[cellAddress]){
+                rowObject[columnName] = worksheet[cellAddress].v??" ";
+            }
+        }
+        rowData.push(rowObject);
+    }
+
+    // Insert the data into the database using Sequelize
+    try {
+        const createdData = await Supervisor.bulkCreate(rowData);
+        res.json(createdData);
+    } catch (error) {
+        console.error('Error inserting data:', error);
+        res.status(500).json({ message: 'Error inserting data' });
+    }
+});
+
 
 router.post('/email',(req,res)=>{
 
@@ -249,6 +298,49 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+
+router.post('/upload', upload.single('supervisorsFile'), (req, res) => {
+    const uploadDir = 'uploads/supervisors/';
+    const filePath = uploadDir + req.file.originalname;
+    console.log(filePath)
+    //Create the directory if it doesn't exist
+    if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir);
+    }
+
+    fs.renameSync(req.file.path, filePath);
+
+    const workbook = xlsx.readFile(filePath);
+    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+
+    const range = xlsx.utils.decode_range(worksheet['!ref']);
+    const numRows = range.e.r - range.s.r + 1;
+
+    const columnNames = [];
+    for (let c = range.s.c; c <= range.e.c; c++) {
+        const cellAddress = xlsx.utils.encode_cell({ r: range.s.r, c });
+        const columnName = worksheet[cellAddress].v;
+        columnNames.push(columnName);
+    }
+
+    const rowData = [];
+    for (let r = range.s.r + 1; r <= range.e.r; r++) {
+        const rowObject = {};
+        for (let c = range.s.c; c <= range.e.c; c++) {
+            const columnName = columnNames[c - range.s.c];
+            const cellAddress = xlsx.utils.encode_cell({ r, c });
+            //console.log(worksheet)
+            if(columnName){
+                rowObject[columnName] = worksheet[cellAddress].v;
+            }
+        }
+        rowData.push(rowObject);
+    }
+    Intern.bulkCreate(rowData,{onDuplicate: 'update',updateOnDuplicate: ['firstName', 'lastName', 'email', 'phone', 'address', 'departmentId', 'photoUrl', 'dob', 'bio']
+    })
+
+    res.json(rowData);
+});
 
 
 

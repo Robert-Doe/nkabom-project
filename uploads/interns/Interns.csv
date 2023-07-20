@@ -1,0 +1,11 @@
+﻿studentId,firstName,lastName,email,phone,address,departmentId,photoUrl,dob,bio
+101,John,Doe,johndoe@example.com,1234567890,123 Main St,CS,https://example.com/photo1.jpg,1/1/1990,Lorem ipsum dolor sit amet
+102,Jane,Smith,janesmith@example.com,9876543210,456 Elm St,IT,https://example.com/photo2.jpg,5/15/1995,Consectetur adipiscing elit
+103,Michael,Johnson,michaeljohnson@example.com,5555555555,789 Oak St,ME,https://example.com/photo3.jpg,12/7/1988,Sed do eiusmod tempor incididunt
+104,Sarah,Williams,sarahwilliams@example.com,1111111111,321 Pine St,CS,https://example.com/photo4.jpg,9/23/1992,Ut labore et dolore magna aliqua
+105,David,Brown,davidbrown@example.com,9999999999,654 Maple St,EE,https://example.com/photo5.jpg,7/12/1998,Excepteur sint occaecat cupidatat non proident
+106,Emily,Johnson,emilyjohnson@example.com,7777777777,987 Cedar St,ME,https://example.com/photo6.jpg,3/18/1991,Duis aute irure dolor in reprehenderit
+107,James,Miller,jamesmiller@example.com,4444444444,753 Walnut St,CS,https://example.com/photo7.jpg,11/30/1993,Voluptate velit esse cillum dolore
+108,Laura,Davis,lauradavis@example.com,2222222222,159 Birch St,IT,https://example.com/photo8.jpg,6/9/1997,Cillum dolore eu fugiat nulla pariatur
+109,Christopher,Taylor,christophertaylor@example.com,8888888888,369 Oak St,EE,https://example.com/photo9.jpg,2/25/1989,Lorem ipsum dolor sit amet
+110,Megan,Anderson,megananderson@example.com,6666666666,852 Elm St,ME,https://example.com/photo10.jpg,8/4/1994,Consectetur adipiscing elit

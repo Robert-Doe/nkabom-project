@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const crypto = require('crypto');
 // Import the Coordinator model
-const Coordinator = require('../models/coordinator');
+const Coordinator = require('../models/Coordinator');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const CoordinatorAuth = require("../models/CoordinatorAuth");

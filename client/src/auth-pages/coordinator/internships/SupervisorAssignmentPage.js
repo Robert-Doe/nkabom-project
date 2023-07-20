@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {AiOutlineFileAdd, AiOutlineCheck} from 'react-icons/ai';
 import * as XLSX from 'xlsx';
 import './SupervisorAssignmentPage.css'
 import CoordinatorNav from "../../../pages/reusables/CoordinatorNav";
+import axios from "axios";
 
 
 function ExcelUpload({onUpload}) {
@@ -29,48 +30,113 @@ function ExcelUpload({onUpload}) {
     return (
         <div className="card-body">
             <h5 className="card-title">Upload Excel Sheet</h5>
-            <input
-                type="file"
-                accept=".xlsx, .xls"
-                onChange={handleFileUpload}
-                className="form-control"
-            />
-            <button
-                type="button"
-                className="btn btn-primary mt-2"
-                onClick={handleSubmit}
-                disabled={!fileInput}
-            >
-                Upload
-            </button>
+            <div className="row">
+                <div className="col-md-6">
+                    <div className="input-group">
+                        <input
+                            type="file"
+                            accept=".xlsx, .xls"
+                            onChange={handleFileUpload}
+                            className="form-control"
+                        />
+                        <button
+                            type="button"
+                            className="btn btn-primary input-group-append"
+                            onClick={handleSubmit}
+                            disabled={!fileInput}>
+                            Upload
+                        </button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     );
 }
 
-function SupervisorEntry({onEntry}) {
-    const [idInput, setIdInput] = useState('');
+
+
+function ManualEntry(){
+    const [themeOptions, setThemeOptions] = useState([]);
+    const supervisorIdRef = useRef();
+    const themeRef = useRef()
+
+    useEffect(() => {
+        // Fetch available internship themes from the server
+        axios
+            .get('http://localhost:9999/api/internship-themes')
+            .then((response) => {
+                // Extract the theme data from the response
+                const themes = response.data.map((theme) => ({
+                    id: theme.id,
+                    name: theme.themeName,
+                }));
+                // Set the theme options state
+                setThemeOptions(themes);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }, []);
 
     const handleManualEntry = (event) => {
         event.preventDefault();
-        if (idInput.trim() === '') {
-            return;
-        }
-        onEntry(idInput.trim());
-        setIdInput('');
+
+        const data = {
+            themeId: themeRef.current.value,
+            staffId: supervisorIdRef.current.value,
+            appointmentDate: new Date().toISOString().slice(0, 10),
+        };
+
+        fetch(
+            `http://localhost:9999/api/internship-themes/${data.themeId}/supervisors`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            }
+        )
+            .then((response) => response.json())
+            .then((responseData) => {
+                console.log('Response:', responseData);
+                // Do something with the response if needed
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     };
+
+    console.log(themeOptions)
 
     return (
         <div className="card-body">
             <h5 className="card-title">Manual Entry</h5>
             <form onSubmit={handleManualEntry}>
-                <div className="input-group mb-3">
-                    <input
-                        type="text"
-                        value={idInput}
-                        onChange={(e) => setIdInput(e.target.value)}
-                        className="form-control"
-                        placeholder="Enter Supervisor ID"
-                    />
+                <div className="row mb-3">
+                    <div className="col-md-6">
+                        <select ref={themeRef} className="form-control" required>
+                            <option value="">Select Intern Theme</option>
+                            {
+                                themeOptions.map((theme) => (
+                                <option key={theme.id} value={theme.id}>
+                                    {theme.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="col-md-6">
+                        <input
+                            ref={supervisorIdRef}
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter Supervisor ID"
+                            required
+                        />
+                    </div>
+                </div>
+                <div className="container mt-3">
                     <button type="submit" className="btn btn-primary">
                         Add Supervisor
                     </button>
@@ -80,30 +146,6 @@ function SupervisorEntry({onEntry}) {
     );
 }
 
-
-function ManualEntry() {
-    const handleManualEntry = (event) => {
-        event.preventDefault();
-        // Process manual entry data and update supervisors state
-        // ...
-    };
-
-    return  <div className="card-body">
-        <h5 className="card-title">Manual Entry</h5>
-        <form onSubmit={handleManualEntry}>
-            <div className="input-group mb-3">
-                <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter Supervisor ID"
-                />
-                <button type="submit" className="btn btn-primary">
-                    Add Supervisor
-                </button>
-            </div>
-        </form>
-    </div>
-}
 
 function SupervisorAssignmentPage() {
     const [selectedCard, setSelectedCard] = useState(null);
@@ -119,7 +161,6 @@ function SupervisorAssignmentPage() {
     };
 
 
-
     const renderExcelUpload = () => {
         return (
             <ExcelUpload onUpload={handleExcelUpload}/>
@@ -128,7 +169,7 @@ function SupervisorAssignmentPage() {
 
     const renderManualEntry = () => {
         return (
-           <ManualEntry/>
+            <ManualEntry/>
         );
     };
 
@@ -168,7 +209,7 @@ function SupervisorAssignmentPage() {
                     {selectedCard === 'excel' && renderExcelUpload()}
                     {selectedCard === 'manual' && renderManualEntry()}
                 </div>
-                {supervisors.length > 0 && (
+                {/*{supervisors.length > 0 && (
                     <div>
                         <h4>Assigned Supervisors:</h4>
                         <ul className="list-group">
@@ -188,7 +229,7 @@ function SupervisorAssignmentPage() {
                     >
                         Assign Supervisors
                     </button>
-                )}
+                )}*/}
             </div>
         </section>
 

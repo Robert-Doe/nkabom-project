@@ -1,0 +1,25 @@
+.supervisor-search{
+    max-width: 300px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.pagination a {
+    padding: 0.5rem;
+    margin: 0 0.25rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.pagination a:hover {
+    background-color: #e6e6e6;
+}
+
+.pagination .active a {
+    background-color: #007bff;
+    color: #fff;
+}
