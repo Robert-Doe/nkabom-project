@@ -55,8 +55,7 @@ function ExcelUpload({onUpload}) {
 }
 
 
-
-function ManualEntry(){
+function ManualEntry() {
     const [themeOptions, setThemeOptions] = useState([]);
     const supervisorIdRef = useRef();
     const themeRef = useRef()
@@ -120,10 +119,11 @@ function ManualEntry(){
                             <option value="">Select Intern Theme</option>
                             {
                                 themeOptions.map((theme) => (
-                                <option key={theme.id} value={theme.id}>
-                                    {theme.name}
-                                </option>
-                            ))}
+                                    <option key={theme.id} value={theme.id}>
+                                        {theme.name}
+                                    </option>
+                                ))
+                            }
                         </select>
                     </div>
                     <div className="col-md-6">
